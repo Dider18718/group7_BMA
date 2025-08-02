@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Shibli.BookAppointmentViewController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0">
 
+    <children>
+
+        <!-- Title -->
+        <Label layoutX="30.0" layoutY="30.0" text="Book Appointment">
+            <font><Font name="System Bold" size="22.0"/></font>
+        </Label>
+
+        <!-- Doctor Selection -->
+        <Label layoutX="50.0" layoutY="90.0" text="Select Doctor:"/>
+        <ComboBox fx:id="doctorComboBox" layoutX="200.0" layoutY="85.0" prefWidth="300.0"/>
+
+        <!-- Date Selection -->
+        <Label layoutX="50.0" layoutY="140.0" text="Appointment Date:"/>
+        <DatePicker fx:id="appointmentDatePicker" layoutX="200.0" layoutY="135.0"/>
+
+        <!-- Time Selection -->
+        <Label layoutX="50.0" layoutY="190.0" text="Time:"/>
+        <ComboBox fx:id="timeComboBox" layoutX="200.0" layoutY="185.0" prefWidth="150.0"/>
+
+        <!-- Reason Field (Optional) -->
+        <Label layoutX="50.0" layoutY="240.0" text="Reason for Visit:"/>
+        <TextArea fx:id="reasonArea" layoutX="200.0" layoutY="235.0" prefWidth="400.0" prefHeight="80.0"/>
+
+        <!-- Buttons -->
+        <Button layoutX="200.0" layoutY="340.0" text="Confirm" onAction="#handleConfirmAppointment"/>
+        <Button layoutX="300.0" layoutY="340.0" text="Back" onAction="#handleBack"/>
+
+    </children>
 </AnchorPane>

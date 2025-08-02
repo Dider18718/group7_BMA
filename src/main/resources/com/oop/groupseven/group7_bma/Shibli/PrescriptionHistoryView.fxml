@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Shibli.PrescriptionHistoryViewController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0">
 
+    <children>
+
+        <!-- Title -->
+        <Label layoutX="30.0" layoutY="30.0" text="Prescription History">
+            <font><Font name="System Bold" size="22.0"/></font>
+        </Label>
+
+        <!-- Prescription Table -->
+        <TableView fx:id="prescriptionTable" layoutX="50.0" layoutY="80.0" prefWidth="700.0" prefHeight="320.0">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="150.0"/>
+                <TableColumn fx:id="doctorColumn" text="Doctor" prefWidth="200.0"/>
+                <TableColumn fx:id="summaryColumn" text="Summary" prefWidth="250.0"/>
+                <TableColumn fx:id="actionColumn" text="Action" prefWidth="100.0"/>
+            </columns>
+        </TableView>
+
+        <!-- Back Button -->
+        <Button layoutX="50.0" layoutY="420.0" text="Back" onAction="#handleBackAction"/>
+
+    </children>
 </AnchorPane>

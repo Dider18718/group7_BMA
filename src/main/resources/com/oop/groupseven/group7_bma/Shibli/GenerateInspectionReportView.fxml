@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.collections.FXCollections?>
+<?import com.sun.org.apache.xpath.internal.operations.String?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Shibli.GenerateInspectionReportViewController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0">
 
+    <children>
+
+        <!-- Title -->
+        <Label layoutX="30.0" layoutY="30.0" text="Generate Inspection Report">
+            <font><Font name="System Bold" size="22.0"/></font>
+        </Label>
+
+        <!-- From Date -->
+        <Label layoutX="50.0" layoutY="90.0" text="From Date:"/>
+        <DatePicker fx:id="fromDatePicker" layoutX="150.0" layoutY="85.0"/>
+
+        <!-- To Date -->
+        <Label layoutX="400.0" layoutY="90.0" text="To Date:"/>
+        <DatePicker fx:id="toDatePicker" layoutX="480.0" layoutY="85.0"/>
+
+        <!-- Room/Ward -->
+        <Label layoutX="50.0" layoutY="140.0" text="Ward/Room:"/>
+        <TextField fx:id="wardField" layoutX="150.0" layoutY="135.0" prefWidth="200.0"/>
+
+        <!-- Report Type -->
+        <Label layoutX="400.0" layoutY="140.0" text="Report Type:"/>
+        <ComboBox fx:id="reportTypeCombo" layoutX="480.0" layoutY="135.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Full Inspection Report"/>
+                    <String fx:value="Room Condition Report"/>
+                    <String fx:value="Fuel Status Report"/>
+                    <String fx:value="Hazard Summary"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- Buttons -->
+        <Button layoutX="200.0" layoutY="220.0" text="Generate PDF" onAction="#handleGenerate"/>
+        <Button layoutX="320.0" layoutY="220.0" text="Back" onAction="#handleBack"/>
+
+    </children>
 </AnchorPane>

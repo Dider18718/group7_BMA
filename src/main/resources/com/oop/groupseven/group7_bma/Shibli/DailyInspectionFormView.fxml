@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
+<?import com.sun.org.apache.xpath.internal.operations.String?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Shibli.DailyInspectionFormViewController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0">
 
+    <children>
+
+        <!-- Title -->
+        <Label layoutX="30.0" layoutY="30.0" text="Daily Inspection Form">
+            <font><Font name="System Bold" size="22.0"/></font>
+        </Label>
+
+        <!-- Oxygen Supply -->
+        <Label layoutX="50.0" layoutY="90.0" text="Oxygen Supply:"/>
+        <ComboBox fx:id="oxygenCombo" layoutX="200.0" layoutY="85.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Sufficient"/>
+                    <String fx:value="Moderate"/>
+                    <String fx:value="Low"/>
+                    <String fx:value="Unavailable"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- Bed Availability -->
+        <Label layoutX="50.0" layoutY="140.0" text="Bed Availability:"/>
+        <ComboBox fx:id="bedCombo" layoutX="200.0" layoutY="135.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Available"/>
+                    <String fx:value="Limited"/>
+                    <String fx:value="Full"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- Ventilator Status -->
+        <Label layoutX="50.0" layoutY="190.0" text="Ventilator Status:"/>
+        <ComboBox fx:id="ventilatorCombo" layoutX="200.0" layoutY="185.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Functional"/>
+                    <String fx:value="Under Maintenance"/>
+                    <String fx:value="Not Available"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- Comments -->
+        <Label layoutX="50.0" layoutY="240.0" text="Additional Notes:"/>
+        <TextArea fx:id="commentField" layoutX="200.0" layoutY="235.0" prefWidth="400.0" prefHeight="100.0"/>
+
+        <!-- Buttons -->
+        <Button layoutX="200.0" layoutY="360.0" text="Submit" onAction="#handleSubmit"/>
+        <Button layoutX="300.0" layoutY="360.0" text="Back" onAction="#handleBack"/>
+
+    </children>
 </AnchorPane>

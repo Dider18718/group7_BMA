@@ -1,46 +1,62 @@
 package com.oop.groupseven.group7_bma.Shibli;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import java.io.IOException;
 
-public class MedicalInspectorDashboardViewController
-{
-    @javafx.fxml.FXML
-    public void initialize() {
+public class MedicalInspectorDashboardViewController {
+
+    @FXML
+    private void handleLogInspection(ActionEvent event) throws IOException {
+        changeScene(event, "log_inspection.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleViewHistory(ActionEvent actionEvent) {
+    @FXML
+    private void handleReportDamage(ActionEvent event) throws IOException {
+        changeScene(event, "report_damage.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleLogInspection(ActionEvent actionEvent) {
+    @FXML
+    private void handleCleaningStatus(ActionEvent event) throws IOException {
+        changeScene(event, "cleaning_status.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleGenerateReport(ActionEvent actionEvent) {
+    @FXML
+    private void handleRoomStatus(ActionEvent event) throws IOException {
+        changeScene(event, "room_status.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleHazardEscalation(ActionEvent actionEvent) {
+    @FXML
+    private void handleViewHistory(ActionEvent event) throws IOException {
+        changeScene(event, "inspection_history.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleCleaningStatus(ActionEvent actionEvent) {
+    @FXML
+    private void handleFuelCheck(ActionEvent event) throws IOException {
+        changeScene(event, "fuel_check.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleReportDamage(ActionEvent actionEvent) {
+    @FXML
+    private void handleHazardEscalation(ActionEvent event) throws IOException {
+        changeScene(event, "hazard_escalation.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleFuelCheck(ActionEvent actionEvent) {
+    @FXML
+    private void handleGenerateReport(ActionEvent event) throws IOException {
+        changeScene(event, "generate_reports.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void handleRoomStatus(ActionEvent actionEvent) {
-    }
-
-    public void handleReportDamage(ActionEvent actionEvent) {
-
+    private void changeScene(ActionEvent event, String fxmlFile) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
+

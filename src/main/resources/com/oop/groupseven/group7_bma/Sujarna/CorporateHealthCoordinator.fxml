@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="422.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorController">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="117.0" layoutY="28.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: #86cce1;" text="Corporate Health Coordinator" textFill="#161818">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="249.0" layoutY="343.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-color: pink;" text="Log Out">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Button>
+      <VBox layoutX="29.0" layoutY="90.0" prefHeight="241.0" prefWidth="270.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#healthCheckupButton" prefHeight="40.0" prefWidth="275.0" text="Schedule of Health Check-Up">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#assignStaffOtEvent" prefHeight="40.0" prefWidth="275.0" text="Assign Medical Staff to Event">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#corporateHealthReport" prefHeight="40.0" prefWidth="275.0" text="Corporate Health Report">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#companyHealthStats" prefHeight="40.0" prefWidth="270.0" text="Company Health Stats">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="333.0" layoutY="90.0" prefHeight="241.0" prefWidth="270.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#companyHealthQueries" prefHeight="40.0" prefWidth="258.0" text="Company Health Queries">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#healthPackageListing" prefHeight="40.0" prefWidth="257.0" text="Health Package Listing">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#trackParticipationRate" prefHeight="40.0" prefWidth="258.0" text="Track Participation Rate">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#postEventFeedback" prefHeight="40.0" prefWidth="260.0" text="Post Event Feedback">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

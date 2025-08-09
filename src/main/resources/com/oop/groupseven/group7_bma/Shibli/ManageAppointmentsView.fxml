@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Shibli.ManageAppointmentsViewController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="800.0">
 
+    <children>
+
+        <!-- Title -->
+        <Label layoutX="30.0" layoutY="30.0" text="Manage Appointments">
+            <font><Font name="System Bold" size="22.0"/></font>
+        </Label>
+
+        <!-- Appointment Table -->
+        <TableView fx:id="appointmentsTable" layoutX="50.0" layoutY="80.0" prefWidth="700.0" prefHeight="300.0">
+            <columns>
+                <TableColumn fx:id="dateCol" text="Date" prefWidth="120.0"/>
+                <TableColumn fx:id="timeCol" text="Time" prefWidth="100.0"/>
+                <TableColumn fx:id="doctorCol" text="Doctor" prefWidth="200.0"/>
+                <TableColumn fx:id="statusCol" text="Status" prefWidth="150.0"/>
+            </columns>
+        </TableView>
+
+        <!-- Buttons -->
+        <Button layoutX="50.0"
+                layoutY="400.0"
+                text="Edit"
+                onAction="#handleEditAppointment"/>
+        <Button layoutX="120.0" layoutY="400.0" text="Cancel" onAction="#handleCancelAppointment"/>
+        <Button layoutX="200.0" layoutY="400.0" text="Back" onAction="#handleBack"/>
+
+    </children>
 </AnchorPane>

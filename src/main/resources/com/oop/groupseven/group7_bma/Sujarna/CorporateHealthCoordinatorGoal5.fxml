@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal5Controller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal5Controller">
+   <children>
+      <Button layoutX="45.0" layoutY="327.0" mnemonicParsing="false" onAction="#addEditButton" prefHeight="30.0" prefWidth="103.0" text="Add/Edit">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="367.0" layoutY="326.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="182.0" text="Back to Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Label alignment="TOP_CENTER" layoutX="177.0" layoutY="28.0" prefHeight="35.0" prefWidth="245.0" style="-fx-background-color: #86cce1;" text="Health Queries">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="queryLabel" layoutX="28.0" layoutY="100.0" prefHeight="35.0" prefWidth="214.0" text="Query Details:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="replyStatusLabel" layoutX="300.0" layoutY="100.0" prefHeight="35.0" prefWidth="191.0" text="Reply Status:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <ListView fx:id="queryListView" layoutX="291.0" layoutY="160.0" prefHeight="146.0" prefWidth="280.0" />
+      <TextArea fx:id="responseTextArea" layoutX="23.0" layoutY="161.0" prefHeight="145.0" prefWidth="214.0" promptText="Response Text" />
+   </children>
 </AnchorPane>

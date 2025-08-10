@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal3Controller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal3Controller">
+   <children>
+      <Label alignment="CENTER" layoutX="109.0" layoutY="26.0" prefHeight="35.0" prefWidth="402.0" style="-fx-background-color: #86cce1;" text="Corporate Health Report">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="uploadStatusLabel" alignment="CENTER" layoutX="346.0" layoutY="123.0" prefHeight="35.0" prefWidth="202.0" text="File Upload Status">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="confirmationLabel" disable="true" layoutX="66.0" layoutY="254.0" prefHeight="30.0" prefWidth="214.0" text="Confirmation Message">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="64.0" layoutY="331.0" mnemonicParsing="false" onAction="#submitButton" prefHeight="30.0" prefWidth="126.0" text="Submit">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="359.0" layoutY="211.0" mnemonicParsing="false" onAction="#attachButton" text="Attach Report (PDF)">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="402.0" layoutY="331.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="165.0" text="Back to Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="companyComboBox" editable="true" layoutX="64.0" layoutY="101.0" prefHeight="42.0" prefWidth="214.0" promptText="Select Company" />
+      <ComboBox fx:id="eventComboBox" editable="true" layoutX="64.0" layoutY="169.0" prefHeight="42.0" prefWidth="214.0" promptText="Select Event ID" />
+   </children>
 </AnchorPane>

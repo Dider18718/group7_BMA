@@ -1,36 +1,65 @@
-package com.oop.groupseven.group7_bma.Shibli;
+package com.oop.groupseven.group7_bma.Patient;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
-import javax.swing.table.TableColumn;
-import javax.swing.text.TableView;
+import java.io.IOException;
 
-public class ManageAppointmentsViewController
-{
-    @javafx.fxml.FXML
-    private TableView appointmentsTable;
-    @javafx.fxml.FXML
-    private TableColumn dateCol;
-    @javafx.fxml.FXML
-    private TableColumn statusCol;
-    @javafx.fxml.FXML
-    private TableColumn doctorCol;
-    @javafx.fxml.FXML
-    private TableColumn timeCol;
+/**
+ * Controller for Manage Appointments view.
+ * Allows patients to view, edit, and cancel booked appointments.
+ */
+public class ManageAppointmentsViewController {
 
-    @javafx.fxml.FXML
+    @FXML
+    private ListView<String> appointmentsList;
+
+    @FXML
     public void initialize() {
+        // Example data - replace with database values
+        appointmentsList.setItems(FXCollections.observableArrayList(
+                "12 Aug 2025 - Dr. Rahman - Cardiology",
+                "15 Aug 2025 - Dr. Ahmed - Neurology"
+        ));
     }
 
-    @javafx.fxml.FXML
-    public void handleBack(ActionEvent actionEvent) {
+    @FXML
+    public void editAppointment(ActionEvent event) {
+        // TODO: Implement editing logic
+        String selected = appointmentsList.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            System.out.println("Editing appointment: " + selected);
+        }
     }
 
-    @javafx.fxml.FXML
-    public void handleCancelAppointment(ActionEvent actionEvent) {
+    @FXML
+    public void cancelAppointment(ActionEvent event) {
+        // TODO: Remove from database
+        String selected = appointmentsList.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            System.out.println("Canceled appointment: " + selected);
+            appointmentsList.getItems().remove(selected);
+        }
     }
 
-    @javafx.fxml.FXML
-    public void handleEditAppointment(ActionEvent actionEvent) {
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "/com/oop/groupseven/group7_bma/Patient/PatientDashboardView.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Patient Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

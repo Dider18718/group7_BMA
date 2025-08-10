@@ -1,28 +1,58 @@
-package com.oop.groupseven.group7_bma.Shibli;
+package com.oop.groupseven.group7_bma.MedicalInspector;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 
-public class HazardEscalationViewController
-{
-    @javafx.fxml.FXML
-    private ComboBox priorityCombo;
-    @javafx.fxml.FXML
-    private TextArea descriptionField;
-    @javafx.fxml.FXML
-    private ComboBox hazardTypeCombo;
+/**
+ * Controller for Hazard Escalation view.
+ * Allows Medical Inspector to escalate critical issues to hospital admin.
+ */
+public class HazardEscalationViewController {
 
-    @javafx.fxml.FXML
+    @FXML
+    private ComboBox<String> hazardTypeCombo;
+
+    @FXML
+    private TextArea hazardDescriptionArea;
+
+    @FXML
     public void initialize() {
+        // Example hazard types
+        hazardTypeCombo.getItems().addAll(
+                "Electrical Failure",
+                "Gas Leak",
+                "Oxygen Shortage",
+                "Infection Outbreak"
+        );
     }
 
-    @javafx.fxml.FXML
-    public void handleBack(ActionEvent actionEvent) {
+    @FXML
+    public void submitHazard(ActionEvent event) {
+        // TODO: Save hazard to database and notify admin
+        System.out.println("Hazard escalated: " + hazardTypeCombo.getValue());
+        System.out.println("Details: " + hazardDescriptionArea.getText());
     }
 
-    @javafx.fxml.FXML
-    public void handleEscalate(ActionEvent actionEvent) {
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "/com/oop/groupseven/group7_bma/MedicalInspector/MedicalInspectorDashboardView.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Inspector Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,41 +1,67 @@
-package com.oop.groupseven.group7_bma.Shibli;
+package com.oop.groupseven.group7_bma.Patient;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.scene.control.TableColumn;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import javax.swing.text.TableView;
-import java.awt.*;
+import java.io.IOException;
 
-public class ManageLocationsViewController
-{
-    @javafx.fxml.FXML
-    private TableColumn addressCol;
-    @javafx.fxml.FXML
-    private TextField locationNameField;
-    @javafx.fxml.FXML
-    private TextField addressField;
-    @javafx.fxml.FXML
-    private TableView locationsTable;
-    @javafx.fxml.FXML
-    private TableColumn locationNameCol;
+/**
+ * Controller for Manage Locations view.
+ * Allows patients to save and update pickup/drop-off addresses.
+ */
+public class ManageLocationsViewController {
 
-    @javafx.fxml.FXML
+    @FXML
+    private ListView<String> locationList;
+
+    @FXML
+    private TextField locationInputField;
+
+    @FXML
     public void initialize() {
+        // Example saved locations
+        locationList.setItems(FXCollections.observableArrayList(
+                "Home - 123 Green Road, Dhaka",
+                "Office - 45 Motijheel, Dhaka"
+        ));
     }
 
-    @javafx.fxml.FXML
-    public void handleUpdateLocation(ActionEvent actionEvent) {
+    @FXML
+    public void addLocation(ActionEvent event) {
+        String newLocation = locationInputField.getText();
+        if (!newLocation.isEmpty()) {
+            locationList.getItems().add(newLocation);
+            locationInputField.clear();
+        }
     }
 
-    @javafx.fxml.FXML
-    public void handleBack(ActionEvent actionEvent) {
+    @FXML
+    public void removeLocation(ActionEvent event) {
+        String selected = locationList.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            locationList.getItems().remove(selected);
+        }
     }
 
-    @javafx.fxml.FXML
-    public void handleDeleteLocation(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void handleAddLocation(ActionEvent actionEvent) {
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "/com/oop/groupseven/group7_bma/Patient/PatientDashboardView.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Patient Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

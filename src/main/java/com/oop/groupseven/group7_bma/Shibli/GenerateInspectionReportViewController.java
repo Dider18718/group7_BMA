@@ -1,31 +1,53 @@
-package com.oop.groupseven.group7_bma.Shibli;
+package com.oop.groupseven.group7_bma.MedicalInspector;
 
-import javafx.scene.control.ComboBox;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 
-public class GenerateInspectionReportViewController
-{
-    @javafx.fxml.FXML
-    private DatePicker fromDatePicker;
-    @javafx.fxml.FXML
-    private TextField wardField;
-    @javafx.fxml.FXML
-    private DatePicker toDatePicker;
-    @javafx.fxml.FXML
-    private ComboBox reportTypeCombo;
+/**
+ * Controller for Generate Inspection Report view.
+ * Allows Medical Inspector to generate and save a detailed inspection report.
+ */
+public class GenerateInspectionReportViewController {
 
-    @javafx.fxml.FXML
-    public void initialize() {
+    @FXML
+    private DatePicker reportDatePicker;
+
+    @FXML
+    private TextArea reportContentArea;
+
+    @FXML
+    public void generateReport(ActionEvent event) {
+        // TODO: Save report to file or database
+        System.out.println("Generating report for date: " + reportDatePicker.getValue());
+        System.out.println("Report content:\n" + reportContentArea.getText());
     }
 
-    @javafx.fxml.FXML
-    public void handleBack(ActionEvent actionEvent) {
+    @FXML
+    public void clearReport(ActionEvent event) {
+        reportDatePicker.setValue(null);
+        reportContentArea.clear();
     }
 
-    @javafx.fxml.FXML
-    public void handleGenerate(ActionEvent actionEvent) {
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "/com/oop/groupseven/group7_bma/MedicalInspector/MedicalInspectorDashboardView.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Inspector Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

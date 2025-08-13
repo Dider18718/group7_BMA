@@ -1,34 +1,63 @@
-package com.oop.groupseven.group7_bma.Shibli;
+package com.oop.groupseven.group7_bma.Patient;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.IOException;
 
-public class MedicalPaymentViewController
-{
-    @javafx.fxml.FXML
-    private ComboBox paymentMethodCombo;
-    @javafx.fxml.FXML
-    private Label billAmountLabel;
-    @javafx.fxml.FXML
-    private TextField expiryDateField;
-    @javafx.fxml.FXML
-    private PasswordField cvvField;
-    @javafx.fxml.FXML
+/**
+ * Controller for Medical Payment view.
+ * Allows patient to pay bills via card or mobile banking.
+ */
+public class MedicalPaymentViewController {
+
+    @FXML
+    private ComboBox<String> paymentMethodCombo;
+
+    @FXML
     private TextField accountNumberField;
 
-    @javafx.fxml.FXML
+    @FXML
+    private TextField amountField;
+
+    @FXML
     public void initialize() {
+        paymentMethodCombo.setItems(FXCollections.observableArrayList(
+                "Credit Card",
+                "Debit Card",
+                "bKash",
+                "Nagad",
+                "Rocket"
+        ));
     }
 
-    @javafx.fxml.FXML
-    public void handleBack(ActionEvent actionEvent) {
+    @FXML
+    public void processPayment(ActionEvent event) {
+        // TODO: Implement payment processing logic
+        System.out.println("Payment method: " + paymentMethodCombo.getValue());
+        System.out.println("Account: " + accountNumberField.getText());
+        System.out.println("Amount: " + amountField.getText());
     }
 
-    @javafx.fxml.FXML
-    public void handlePay(ActionEvent actionEvent) {
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "/com/oop/groupseven/group7_bma/Patient/PatientDashboardView.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Patient Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

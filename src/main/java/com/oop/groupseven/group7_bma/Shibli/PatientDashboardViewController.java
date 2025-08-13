@@ -1,46 +1,70 @@
-package com.oop.groupseven.group7_bma.Shibli;
+package com.oop.groupseven.group7_bma.Patient;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class PatientDashboardViewController
-{
-    @javafx.fxml.FXML
-    public void initialize() {
+import java.io.IOException;
+
+/**
+ * Controller for Patient Dashboard.
+ * Main navigation hub for patient actions.
+ */
+public class PatientDashboardViewController {
+
+    @FXML
+    public void goToBookAppointment(ActionEvent event) {
+        switchScene(event, "BookAppointmentView.fxml", "Book Appointment");
     }
 
-    @javafx.fxml.FXML
-    public void handleManageAppointments(ActionEvent actionEvent) {
+    @FXML
+    public void goToPayments(ActionEvent event) {
+        switchScene(event, "MedicalPaymentView.fxml", "Payments");
     }
 
-    @javafx.fxml.FXML
-    public void handleEmergency(ActionEvent actionEvent) {
+    @FXML
+    public void goToEmergencyHelp(ActionEvent event) {
+        switchScene(event, "EmergencyHelpRequestView.fxml", "Emergency Help");
     }
 
-    @javafx.fxml.FXML
-    public void handleManageLocations(ActionEvent actionEvent) {
+    @FXML
+    public void goToFeedback(ActionEvent event) {
+        switchScene(event, "FeedbackSubmissionView.fxml", "Feedback");
     }
 
-    @javafx.fxml.FXML
-    public void handlePayment(ActionEvent actionEvent) {
+    @FXML
+    public void goToAppointments(ActionEvent event) {
+        switchScene(event, "ManageAppointmentsView.fxml", "Manage Appointments");
     }
 
-    @javafx.fxml.FXML
-    public void handleBookAppointment(ActionEvent actionEvent) {
+    @FXML
+    public void goToLocations(ActionEvent event) {
+        switchScene(event, "ManageLocationsView.fxml", "Saved Locations");
     }
 
-    @javafx.fxml.FXML
-    public void handleFeedback(ActionEvent actionEvent) {
+    @FXML
+    public void goToPrescriptionHistory(ActionEvent event) {
+        switchScene(event, "PrescriptionHistoryView.fxml", "Prescription History");
     }
 
-    @javafx.fxml.FXML
-    public void handleLogout(ActionEvent actionEvent) {
+    @FXML
+    public void goToFavoriteDoctors(ActionEvent event) {
+        switchScene(event, "FavoriteDoctorsView.fxml", "Favorite Doctors");
     }
 
-    @javafx.fxml.FXML
-    public void handlePrescriptionHistory(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void handleFavoriteDoctors(ActionEvent actionEvent) {
+    private void switchScene(ActionEvent event, String fxmlFile, String title) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/oop/groupseven/group7_bma/Patient/" + fxmlFile));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle(title);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

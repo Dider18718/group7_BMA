@@ -10,5 +10,12 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.AttendanceReportController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Staff Attendance Report"/>
+        <TextField fx:id="departmentField" layoutX="20" layoutY="60" promptText="Department (e.g., Cardiology)"/>
+        <TextField fx:id="monthField" layoutX="260" layoutY="60" promptText="Month (e.g., 2025-08)"/>
+        <Button text="Generate" layoutX="20" layoutY="100" onAction="#generate"/>
+        <TextArea fx:id="reportArea" layoutX="20" layoutY="140" prefWidth="440" prefHeight="140" editable="false"/>
+    </children>
 
 </AnchorPane>

@@ -10,5 +10,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.SupportTicketsController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Support Tickets"/>
+        <TextField fx:id="ticketIdField" layoutX="20" layoutY="60" promptText="Ticket ID"/>
+        <TextArea fx:id="questionArea" layoutX="20" layoutY="100" prefWidth="460" prefHeight="100" promptText="(Mock) Ticket content here..." />
+        <TextField fx:id="replyField" layoutX="20" layoutY="210" promptText="Type reply"/>
+        <Button text="Send Reply" layoutX="20" layoutY="245" onAction="#sendReply"/>
+        <Label fx:id="statusLabel" layoutX="120" layoutY="249"/>
+    </children>
 
 </AnchorPane>

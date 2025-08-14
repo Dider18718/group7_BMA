@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal2Controller">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="106.0" layoutY="29.0" prefHeight="35.0" prefWidth="388.0" style="-fx-background-color: #86cce1;" text="Assign Medical Staff to Event">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="eventComboBox" editable="true" layoutX="31.0" layoutY="92.0" prefHeight="35.0" prefWidth="202.0" promptText="Select Scheduled Event" />
+      <ComboBox fx:id="staffComboBox" editable="true" layoutX="31.0" layoutY="148.0" prefHeight="35.0" prefWidth="202.0" promptText="Seclect Staff Member" />
+      <ComboBox fx:id="roleComboBox" editable="true" layoutX="31.0" layoutY="200.0" prefHeight="35.0" prefWidth="202.0" promptText="Select Role" />
+      <Label fx:id="confirmationLabel" alignment="TOP_CENTER" disable="true" layoutX="29.0" layoutY="262.0" prefHeight="26.0" prefWidth="202.0" text="Confirmation Message" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ListView fx:id="assignedListView" layoutX="293.0" layoutY="122.0" prefHeight="182.0" prefWidth="250.0" />
+      <Button layoutX="54.0" layoutY="335.0" mnemonicParsing="false" onAction="#assignButton" prefHeight="30.0" prefWidth="115.0" text="Assign Staff">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="342.0" layoutY="335.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="213.0" text="Back to Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

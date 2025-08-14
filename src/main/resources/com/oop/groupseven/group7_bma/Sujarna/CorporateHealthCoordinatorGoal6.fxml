@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="455.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal6Controller">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="121.0" layoutY="33.0" prefHeight="35.0" prefWidth="358.0" style="-fx-background-color: #86cce1;" text="Maintain Health Package">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="confirmationLabel" disable="true" layoutX="39.0" layoutY="264.0" prefHeight="30.0" prefWidth="166.0" text="Confirmatin Message">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameTextField" layoutX="39.0" layoutY="100.0" prefHeight="35.0" prefWidth="200.0" promptText="Package Name" />
+      <TextArea fx:id="serviceTextArea" layoutX="341.0" layoutY="92.0" prefHeight="106.0" prefWidth="206.0" promptText="Services Included" />
+      <TextField fx:id="priceTextField" layoutX="39.0" layoutY="145.0" prefHeight="35.0" prefWidth="200.0" promptText="Price" />
+      <TextField fx:id="durationTextField" layoutX="39.0" layoutY="192.0" prefHeight="35.0" prefWidth="200.0" promptText="Duration" />
+      <TableView fx:id="packageTable" layoutX="301.0" layoutY="225.0" prefHeight="122.0" prefWidth="297.0">
+        <columns>
+          <TableColumn fx:id="pNameTableView" prefWidth="75.0" text="P.Name" />
+          <TableColumn fx:id="serviceTableView" prefWidth="75.0" text="Service" />
+            <TableColumn fx:id="priceTableView" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="durationTableView" prefWidth="75.0" text="Duration" />
+        </columns>
+      </TableView>
+      <Button layoutX="39.0" layoutY="395.0" mnemonicParsing="false" onAction="#addEditButton" prefHeight="30.0" prefWidth="107.0" text="Add/Edit">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="232.0" layoutY="395.0" mnemonicParsing="false" onAction="#clearButton" prefHeight="30.0" prefWidth="118.0" text="Clear Fields">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="428.0" layoutY="395.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="150.0" text="Back to Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,68 +1,76 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URL;
+import java.time.LocalDateTime;
 
+@SuppressWarnings({ "SpellCheckingInspection", "CanBeFinal" })
 public class CorporateHealthCoordinatorGoal7Controller {
 
-    @javafx.fxml.FXML
-    private Label rateLabel;
-    @javafx.fxml.FXML
-    private TextField attendanceTextField;
-    @javafx.fxml.FXML
-    private Label employedLabel;
-    @javafx.fxml.FXML
-    private ComboBox<String> eventComboBox;
+    // Defaults keep IntelliJ from warning "never assigned" while FXML still injects at runtime.
+    @javafx.fxml.FXML private ComboBox<String> eventComboBox = new ComboBox<>();
+    @javafx.fxml.FXML private TextField attendanceField = new TextField(); // number of attendees
+    @javafx.fxml.FXML private TextField employedField   = new TextField(); // total eligible employees
+    @javafx.fxml.FXML private ProgressBar participationBar = new ProgressBar(0.0);
+    @javafx.fxml.FXML private Label resultLabel = new Label();
+    @javafx.fxml.FXML private ListView<String> historyListView = new ListView<>();
 
     @javafx.fxml.FXML
-    public void submitButton(ActionEvent actionEvent) {
-        String attendanceStr = attendanceTextField != null ? attendanceTextField.getText() : null;
-        int attendance;
-        try {
-            attendance = attendanceStr != null && !attendanceStr.isBlank()
-                    ? Integer.parseInt(attendanceStr.trim())
-                    : 0;
-        } catch (NumberFormatException e) {
-            showError("Invalid input", "Attendance must be a number.");
+    public void calculateButton(ActionEvent actionEvent) {
+        // Read values
+        String event = eventComboBox != null ? eventComboBox.getValue() : null;
+        Integer attended = parseInt(attendanceField.getText(), "Attendance");
+        Integer employed = parseInt(employedField.getText(), "Total Employed");
+
+        if (attended == null || employed == null) {
+            actionEvent.consume();
+            return;
+        }
+        if (employed <= 0) {
+            showError("Invalid input", "Total Employed must be greater than 0.");
+            actionEvent.consume();
+            return;
+        }
+        if (attended < 0 || attended > employed) {
+            showError("Invalid input", "Attendance must be between 0 and Total Employed.");
             actionEvent.consume();
             return;
         }
 
-        // Extract digits from employedLabel text
-        int employed;
-        if (employedLabel != null && employedLabel.getText() != null) {
-            String txt = employedLabel.getText();
-            StringBuilder digits = new StringBuilder();
-            for (int i = 0; i < txt.length(); i++) {
-                char c = txt.charAt(i);
-                if (Character.isDigit(c)) digits.append(c);
-            }
-            String ds = digits.toString();
-            if (!ds.isEmpty()) {
-                try { employed = Integer.parseInt(ds); }
-                catch (NumberFormatException ex) { employed = 100; }
-            } else {
-                employed = 100;
-            }
-        } else {
-            employed = 100;
+        double rate = (attended * 100.0) / employed;           // percentage
+        double progress = Math.max(0.0, Math.min(1.0, rate / 100.0));
+
+        if (participationBar != null) participationBar.setProgress(progress);
+
+        String labelText = String.format("Participation: %.2f%%  (%,d / %,d)%s",
+                rate, attended, employed,
+                event != null ? "  |  Event: " + event : "");
+        if (resultLabel != null) resultLabel.setText(labelText);
+
+        if (historyListView != null) {
+            String item = String.format("[%s] %s",
+                    LocalDateTime.now(),
+                    labelText);
+            historyListView.getItems().add(item);
+            historyListView.scrollTo(historyListView.getItems().size() - 1);
         }
 
-        double rate = employed > 0 ? (attendance * 100.0) / employed : 0.0;
-        String selectedEvent = eventComboBox != null ? eventComboBox.getValue() : null;
+        actionEvent.consume();
+    }
 
-        if (rateLabel != null) {
-            String prefix = (selectedEvent != null) ? ("Event " + selectedEvent + " • ") : "";
-            rateLabel.setText(prefix + String.format("Participation Rate: %.1f%%", rate));
-        }
-
+    @javafx.fxml.FXML
+    public void clearButton(ActionEvent actionEvent) {
+        if (attendanceField != null) attendanceField.clear();
+        if (employedField   != null) employedField.clear();
+        if (participationBar != null) participationBar.setProgress(0.0);
+        if (resultLabel != null) resultLabel.setText("Cleared");
         actionEvent.consume();
     }
 
@@ -71,32 +79,44 @@ public class CorporateHealthCoordinatorGoal7Controller {
         navigateToDashboard(actionEvent);
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
-    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
+    // ---------- helpers ----------
 
-    private void navigateToDashboard(ActionEvent event) {
-        URL url = this.getClass().getResource(BASE + "CorporateHealthCoordinator.fxml");
-        if (url == null) {
-            showError("Missing FXML",
-                    "Could not find resource: " + BASE + "CorporateHealthCoordinator.fxml" + System.lineSeparator()
-                            + "Make sure it is on the runtime classpath under src/main/resources");
-            return;
+    private Integer parseInt(String s, String field) {
+        if (s == null) {
+            showError("Missing value", field + " is required.");
+            return null;
+        }
+        String trimmed = s.trim();
+        if (trimmed.isEmpty()) {
+            showError("Missing value", field + " is required.");
+            return null;
         }
         try {
-            Parent root = FXMLLoader.load(url);
+            return Integer.parseInt(trimmed);
+        } catch (NumberFormatException e) {
+            showError("Invalid number", field + " must be an integer.");
+            return null;
+        }
+    }
+
+    private void showError(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("Error");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
+    }
+
+    private void navigateToDashboard(ActionEvent event) {
+        try {
+            FXMLLoader loader =
+                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             showError("Navigation Error", e.getMessage());
         }
-    }
-
-    private void showError(String header, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(header);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

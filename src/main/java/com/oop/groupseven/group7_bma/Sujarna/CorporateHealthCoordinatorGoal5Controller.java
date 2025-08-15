@@ -1,41 +1,60 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.net.URL;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+@SuppressWarnings({ "SpellCheckingInspection", "CanBeFinal" })
 public class CorporateHealthCoordinatorGoal5Controller {
 
-    @javafx.fxml.FXML
-    private ListView<String> queryListView;
-    @javafx.fxml.FXML
-    private Label queryLabel;
-    @javafx.fxml.FXML
-    private TextArea responseTextArea;
-    @javafx.fxml.FXML
-    private Label replyStatusLabel;
+    // Default inits silence “never assigned” without breaking FXML injection at runtime.
+    @javafx.fxml.FXML private ComboBox<String> companyComboBox = new ComboBox<>();
+    @javafx.fxml.FXML private ComboBox<String> topicComboBox   = new ComboBox<>();
+    @javafx.fxml.FXML private TextArea        queryTextArea    = new TextArea();
+    @javafx.fxml.FXML private ListView<String> queriesListView = new ListView<>();
+    @javafx.fxml.FXML private Label            statusLabel      = new Label();
 
     @javafx.fxml.FXML
-    public void addEditButton(ActionEvent actionEvent) {
-        String selectedQuery = (queryListView != null) ? queryListView.getSelectionModel().getSelectedItem() : null;
-        String response = (responseTextArea != null) ? responseTextArea.getText() : null;
+    public void submitButton(ActionEvent actionEvent) {
+        String company = (companyComboBox != null) ? companyComboBox.getValue() : null;
+        String topic   = (topicComboBox   != null) ? topicComboBox.getValue()   : null;
+        String query   = (queryTextArea   != null) ? queryTextArea.getText()    : null;
 
-        if (queryLabel != null) {
-            queryLabel.setText("Query Details: " + selectedQuery);
+        if (company == null || company.isBlank() ||
+                topic   == null || topic.isBlank()   ||
+                query   == null || query.isBlank()) {
+            showError("Missing data", "Please select a Company, a Topic, and enter a Query.");
+            actionEvent.consume();
+            return;
         }
-        if (replyStatusLabel != null) {
-            replyStatusLabel.setText((response != null && !response.isBlank()) ? "Response saved" : "No response");
+
+        String item = "[" + LocalDateTime.now() + "] "
+                + "Company=" + company + ", Topic=" + topic + ", Query=" + query;
+
+        if (queriesListView != null) {
+            queriesListView.getItems().add(item);
+            queriesListView.scrollTo(queriesListView.getItems().size() - 1);
         }
-        // Optionally reflect the response back into the list for a visible change
-        if (queryListView != null && selectedQuery != null && response != null && !response.isBlank()) {
-            queryListView.getItems().add("Replied to: " + selectedQuery);
+        if (statusLabel != null) {
+            statusLabel.setText("Query submitted for " + company + " (topic: " + topic + ")");
         }
+
+        actionEvent.consume();
+    }
+
+    @javafx.fxml.FXML
+    public void clearButton(ActionEvent actionEvent) {
+        if (queryTextArea != null) queryTextArea.clear();
+        if (topicComboBox != null) topicComboBox.getSelectionModel().clearSelection();
+        if (statusLabel != null) statusLabel.setText("Cleared");
         actionEvent.consume();
     }
 
@@ -44,32 +63,24 @@ public class CorporateHealthCoordinatorGoal5Controller {
         navigateToDashboard(actionEvent);
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
-    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
+    private void showError(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("Error");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
+    }
 
     private void navigateToDashboard(ActionEvent event) {
-        URL url = this.getClass().getResource(BASE + "CorporateHealthCoordinator.fxml");
-        if (url == null) {
-            showError("Missing FXML",
-                    "Could not find resource: " + BASE + "CorporateHealthCoordinator.fxml" + System.lineSeparator()
-                            + "Make sure it is on the runtime classpath under src/main/resources");
-            return;
-        }
         try {
-            Parent root = FXMLLoader.load(url);
+            FXMLLoader loader =
+                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             showError("Navigation Error", e.getMessage());
         }
-    }
-
-    private void showError(String header, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(header);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

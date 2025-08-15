@@ -11,6 +11,7 @@
 
 
 <AnchorPane prefHeight="455.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal6Controller">
+    <children>
 
       <Label alignment="TOP_CENTER" layoutX="121.0" layoutY="33.0" prefHeight="35.0" prefWidth="358.0" style="-fx-background-color: #86cce1;" text="Maintain Health Package">
          <font>
@@ -49,5 +50,5 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-
+    </children>
 </AnchorPane>

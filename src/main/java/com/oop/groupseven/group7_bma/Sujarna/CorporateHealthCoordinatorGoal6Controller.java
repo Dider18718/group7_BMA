@@ -1,90 +1,117 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import com.oop.groupseven.group7_bma.HelloApplication;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class CorporateHealthCoordinatorGoal6Controller implements Initializable {
+@SuppressWarnings({ "SpellCheckingInspection", "CanBeFinal" })
+public class CorporateHealthCoordinatorGoal6Controller {
 
-    @javafx.fxml.FXML private TextArea serviceTextArea;
-    @javafx.fxml.FXML private TableColumn<PackageRow, String> pNameTableView;
-    @javafx.fxml.FXML private TableView<PackageRow> packageTable;
-    @javafx.fxml.FXML private TextField durationTextField;
-    @javafx.fxml.FXML private TextField nameTextField;
-    @javafx.fxml.FXML private TableColumn<PackageRow, String> durationTableView;
-    @javafx.fxml.FXML private TableColumn<PackageRow, String> priceTableView;
-    @javafx.fxml.FXML private TextField priceTextField;
-    @javafx.fxml.FXML private TableColumn<PackageRow, String> serviceTableView;
-    @javafx.fxml.FXML private Label confirmationLabel;
+    // Inputs
+    @javafx.fxml.FXML private TextField serviceField = new TextField();
+    @javafx.fxml.FXML private TextField priceField   = new TextField();
+    @javafx.fxml.FXML private TextField durationField = new TextField();
 
-    public static class PackageRow {
-        private final SimpleStringProperty name = new SimpleStringProperty();
-        private final SimpleStringProperty service = new SimpleStringProperty();
-        private final SimpleStringProperty price = new SimpleStringProperty();
-        private final SimpleStringProperty duration = new SimpleStringProperty();
+    // Table + columns
+    @javafx.fxml.FXML private TableView<StatRow> statsTable = new TableView<>();
+    @javafx.fxml.FXML private TableColumn<StatRow, String> serviceCol = new TableColumn<>("Service");
+    @javafx.fxml.FXML private TableColumn<StatRow, Number> priceCol   = new TableColumn<>("Price");
+    @javafx.fxml.FXML private TableColumn<StatRow, Number> durationCol = new TableColumn<>("Duration");
 
-        public PackageRow(String name, String service, String price, String duration) {
-            this.name.set(name);
-            this.service.set(service);
-            this.price.set(price);
-            this.duration.set(duration);
-        }
-        public String getName() { return name.get(); }
-        public String getService() { return service.get(); }
-        public String getPrice() { return price.get(); }
-        public String getDuration() { return duration.get(); }
-    }
+    // Status label
+    @javafx.fxml.FXML private Label statusLabel = new Label();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        if (packageTable != null && packageTable.getItems() == null) {
-            packageTable.setItems(FXCollections.observableArrayList());
-        }
-        if (pNameTableView != null) {
-            pNameTableView.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getName()));
-        }
-        if (serviceTableView != null) {
-            serviceTableView.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getService()));
-        }
-        if (priceTableView != null) {
-            priceTableView.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getPrice()));
-        }
-        if (durationTableView != null) {
-            durationTableView.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getDuration()));
-        }
+    private final ObservableList<StatRow> rows = FXCollections.observableArrayList();
+
+    @javafx.fxml.FXML
+    public void initialize() {
+        // Wire columns to model getters
+        serviceCol.setCellValueFactory(new PropertyValueFactory<>("service"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
+
+        if (!statsTable.getColumns().contains(serviceCol)) statsTable.getColumns().add(serviceCol);
+        if (!statsTable.getColumns().contains(priceCol))   statsTable.getColumns().add(priceCol);
+        if (!statsTable.getColumns().contains(durationCol)) statsTable.getColumns().add(durationCol);
+
+        statsTable.setItems(rows);
+        statsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, sel) -> {
+            if (sel != null) {
+                serviceField.setText(sel.getService());
+                priceField.setText(Double.toString(sel.getPrice()));
+                durationField.setText(Integer.toString(sel.getDuration()));
+            }
+        });
     }
 
     @javafx.fxml.FXML
-    public void addEditButton(ActionEvent actionEvent) {
-        String name = nameTextField != null ? nameTextField.getText() : null;
-        String service = serviceTextArea != null ? serviceTextArea.getText() : null;
-        String price = priceTextField != null ? priceTextField.getText() : null;
-        String duration = durationTextField != null ? durationTextField.getText() : null;
-
-        if (packageTable != null) {
-            packageTable.getItems().add(new PackageRow(name, service, price, duration));
+    public void addButton(ActionEvent actionEvent) {
+        String service = trimOrNull(serviceField.getText());
+        Double price   = parseDouble(priceField.getText(), "Price");
+        Integer dur    = parseInt(durationField.getText(), "Duration (minutes)");
+        if (service == null || price == null || dur == null) {
+            actionEvent.consume();
+            return;
         }
-        if (confirmationLabel != null) confirmationLabel.setText("Saved package: " + name);
+        rows.add(new StatRow(service, price, dur));
+        setStatus("Added: " + service + " (price=" + price + ", duration=" + dur + "m)");
+        clearInputs();
+        actionEvent.consume();
+    }
+
+    @javafx.fxml.FXML
+    public void updateButton(ActionEvent actionEvent) {
+        StatRow sel = statsTable.getSelectionModel().getSelectedItem();
+        if (sel == null) {
+            showError("No selection", "Select a row to update.");
+            actionEvent.consume();
+            return;
+        }
+        String service = trimOrNull(serviceField.getText());
+        Double price   = parseDouble(priceField.getText(), "Price");
+        Integer dur    = parseInt(durationField.getText(), "Duration (minutes)");
+        if (service == null || price == null || dur == null) {
+            actionEvent.consume();
+            return;
+        }
+        sel.setService(service);
+        sel.setPrice(price);
+        sel.setDuration(dur);
+        statsTable.refresh();
+        setStatus("Updated: " + service);
+        actionEvent.consume();
+    }
+
+    @javafx.fxml.FXML
+    public void deleteButton(ActionEvent actionEvent) {
+        StatRow sel = statsTable.getSelectionModel().getSelectedItem();
+        if (sel == null) {
+            showError("No selection", "Select a row to delete.");
+            actionEvent.consume();
+            return;
+        }
+        rows.remove(sel);
+        setStatus("Deleted: " + sel.getService());
         actionEvent.consume();
     }
 
     @javafx.fxml.FXML
     public void clearButton(ActionEvent actionEvent) {
-        if (nameTextField != null) nameTextField.clear();
-        if (serviceTextArea != null) serviceTextArea.clear();
-        if (priceTextField != null) priceTextField.clear();
-        if (durationTextField != null) durationTextField.clear();
-        if (confirmationLabel != null) confirmationLabel.setText("Cleared");
+        clearInputs();
+        setStatus("Cleared");
         actionEvent.consume();
     }
 
@@ -93,31 +120,82 @@ public class CorporateHealthCoordinatorGoal6Controller implements Initializable 
         navigateToDashboard(actionEvent);
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
-    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
+    // ---------- helpers ----------
+
+    private void clearInputs() {
+        serviceField.clear();
+        priceField.clear();
+        durationField.clear();
+        statsTable.getSelectionModel().clearSelection();
+    }
+
+    private void setStatus(String text) {
+        if (statusLabel != null) statusLabel.setText(text);
+    }
+
+    private String trimOrNull(String s) {
+        if (s == null) return null;
+        String t = s.trim();
+        return t.isEmpty() ? null : t;
+    }
+
+    private Double parseDouble(String s, String fieldName) {
+        try {
+            return Double.parseDouble(trimOrNull(s));
+        } catch (Exception e) {
+            showError("Invalid number", fieldName + " must be a valid number.");
+            return null;
+        }
+    }
+
+    private Integer parseInt(String s, String fieldName) {
+        try {
+            return Integer.parseInt(trimOrNull(s));
+        } catch (Exception e) {
+            showError("Invalid number", fieldName + " must be an integer.");
+            return null;
+        }
+    }
+
+    private void showError(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("Error");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
+    }
 
     private void navigateToDashboard(ActionEvent event) {
-        URL url = this.getClass().getResource(BASE + "CorporateHealthCoordinator.fxml");
-        if (url == null) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setHeaderText("Missing FXML");
-            a.setContentText("Could not find resource: " + BASE + "CorporateHealthCoordinator.fxml" + System.lineSeparator()
-                    + "Make sure it is on the classpath under src/main/resources");
-            a.showAndWait();
-            return;
-        }
         try {
-            Parent root = FXMLLoader.load(url);
+            FXMLLoader loader =
+                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setHeaderText("Navigation Error");
-            a.setContentText(e.getMessage());
-            a.showAndWait();
+            showError("Navigation Error", e.getMessage());
         }
+    }
+
+    // ---------- table row model ----------
+    public static class StatRow {
+        private final SimpleStringProperty service = new SimpleStringProperty();
+        private final SimpleDoubleProperty price   = new SimpleDoubleProperty();
+        private final SimpleIntegerProperty duration = new SimpleIntegerProperty();
+
+        public StatRow(String service, double price, int duration) {
+            this.service.set(service);
+            this.price.set(price);
+            this.duration.set(duration);
+        }
+
+        public String getService()   { return service.get(); }
+        public double getPrice()     { return price.get(); }
+        public int getDuration()     { return duration.get(); }
+
+        public void setService(String s)   { service.set(s); }
+        public void setPrice(double p)     { price.set(p); }
+        public void setDuration(int d)     { duration.set(d); }
     }
 }

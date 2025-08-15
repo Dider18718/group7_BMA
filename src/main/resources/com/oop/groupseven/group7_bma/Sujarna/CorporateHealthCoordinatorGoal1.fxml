@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal1Controller">
+    <children>
 
       <Label alignment="TOP_CENTER" layoutX="107.0" layoutY="25.0" prefHeight="35.0" prefWidth="378.0" style="-fx-background-color: #86cce1;" text="Schedule of Health Check-Up">
          <font>
@@ -35,5 +36,5 @@
          </font>
       </Label>
       <ListView fx:id="servicesListView" layoutX="325.0" layoutY="141.0" prefHeight="162.0" prefWidth="237.0" />
-
+    </children>
 </AnchorPane>

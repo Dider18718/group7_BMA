@@ -1,6 +1,5 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
-import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,36 +8,37 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class CorporateHealthCoordinatorGoal2Controller {
 
-    @javafx.fxml.FXML private ComboBox<String> staffComboBox;
-    @javafx.fxml.FXML private ComboBox<String> roleComboBox;
-    @javafx.fxml.FXML private ComboBox<String> eventComboBox;
-    @javafx.fxml.FXML private ListView<String> assignedListView;
-    @javafx.fxml.FXML private Label confirmationLabel;
+    @javafx.fxml.FXML
+    private ComboBox<String> staffComboBox;
+    @javafx.fxml.FXML
+    private ComboBox<String> roleComboBox;
+    @javafx.fxml.FXML
+    private Label confirmationLabel;
+    @javafx.fxml.FXML
+    private ListView<String> assignedListView;
+    @javafx.fxml.FXML
+    private ComboBox<String> eventComboBox;
 
     @javafx.fxml.FXML
     public void assignButton(ActionEvent actionEvent) {
-        String staff = (staffComboBox != null) ? staffComboBox.getValue() : null;
-        String role  = (roleComboBox  != null) ? roleComboBox.getValue()  : null;
-        String event = (eventComboBox != null) ? eventComboBox.getValue() : null;
+        String staff = staffComboBox != null ? staffComboBox.getValue() : null;
+        String role  = roleComboBox  != null ? roleComboBox.getValue()  : null;
+        String event = eventComboBox != null ? eventComboBox.getValue() : null;
 
-        if (staff == null || role == null || event == null) {
-            showError("Missing selection", "Please choose Staff, Role, and Event before assigning.");
-            actionEvent.consume();
-            return;
-        }
+        String summary = "Assigned: staff=" + staff + ", role=" + role + ", event=" + event;
 
-        String summary = String.format("Assigned: staff=%s, role=%s, event=%s", staff, role, event);
         if (assignedListView != null) {
             assignedListView.getItems().add(summary);
         }
         if (confirmationLabel != null) {
             confirmationLabel.setText(summary);
         }
-        actionEvent.consume(); // mark param as used
+
+        actionEvent.consume();
     }
 
     @javafx.fxml.FXML
@@ -46,11 +46,19 @@ public class CorporateHealthCoordinatorGoal2Controller {
         navigateToDashboard(actionEvent);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
+    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
+
     private void navigateToDashboard(ActionEvent event) {
+        URL url = this.getClass().getResource(BASE + "CorporateHealthCoordinator.fxml");
+        if (url == null) {
+            showError("Missing FXML",
+                    "Could not find resource: " + BASE + "CorporateHealthCoordinator.fxml" + System.lineSeparator()
+                            + "Make sure it is on the runtime classpath under src/main/resources");
+            return;
+        }
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
-            Parent root = loader.load();
+            Parent root = FXMLLoader.load(url);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -60,10 +68,10 @@ public class CorporateHealthCoordinatorGoal2Controller {
     }
 
     private void showError(String header, String message) {
-        Alert a = new Alert(Alert.AlertType.ERROR);
-        a.setTitle("Error");
-        a.setHeaderText(header);
-        a.setContentText(message);
-        a.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

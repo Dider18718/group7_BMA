@@ -1,82 +1,90 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
-import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class CorporateHealthCoordinatorController {
 
-    // Goal entries — every handler uses the ActionEvent
-    @javafx.fxml.FXML
-    public void corporateHealthReport(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal1.fxml");
-    }
+    @SuppressWarnings("SpellCheckingInspection")
+    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
 
-    @javafx.fxml.FXML
-    public void healthPackageListing(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal2.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void assignStaffOtEvent(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal3.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void healthCheckupButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal4.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void companyHealthQueries(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal5.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void companyHealthStats(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal6.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void trackParticipationRate(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal7.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void postEventFeedback(ActionEvent actionEvent) {
-        navigate(actionEvent, "CorporateHealthCoordinatorGoal8.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void logOutButton(ActionEvent actionEvent) {
-        // Uses the event; satisfies the inspection and closes the window
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.close();
-        actionEvent.consume();
-    }
-
-    /** Centralized navigation helper (no java.net.URL import needed). */
-    private void navigate(ActionEvent event, String fxmlName) {
+    private void navigate(ActionEvent event, String fxmlPath) {
+        URL url = CorporateHealthCoordinatorController.class.getResource(fxmlPath);
+        if (url == null) {
+            showError("Missing FXML",
+                    "Could not find resource: " + fxmlPath +
+                            "\nMake sure it is on the runtime classpath under src/main/resources");
+            return;
+        }
         try {
-            FXMLLoader loader =
-                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/" + fxmlName));
-            Parent root = loader.load();
+            Parent root = FXMLLoader.load(url);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setHeaderText("Navigation Error");
-            a.setContentText(e.getMessage());
-            a.showAndWait();
+            showError("Navigation Error", e.getMessage());
         }
     }
+
+    private void showError(String header, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @javafx.fxml.FXML
+    public void logOutButton(ActionEvent actionEvent) {
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @javafx.fxml.FXML
+    public void postEventFeedback(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal8.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void trackParticipationRate(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal7.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void companyHealthStats(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal6.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void companyHealthQueries(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal5.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void healthCheckupButton(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal4.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void assignStaffOtEvent(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal3.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void healthPackageListing(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal2.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void corporateHealthReport(ActionEvent actionEvent) {
+        navigate(actionEvent, BASE + "CorporateHealthCoordinatorGoal1.fxml");
+    }
 }
+

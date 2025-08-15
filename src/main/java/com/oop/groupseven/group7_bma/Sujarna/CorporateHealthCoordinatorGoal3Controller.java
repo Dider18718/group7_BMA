@@ -1,6 +1,5 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
-import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,31 +8,28 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class CorporateHealthCoordinatorGoal3Controller {
 
-    @javafx.fxml.FXML private ComboBox<String> companyComboBox;
-    @javafx.fxml.FXML private ComboBox<String> eventComboBox;
-    @javafx.fxml.FXML private Label uploadStatusLabel;
-    @javafx.fxml.FXML private Label confirmationLabel;
+    @javafx.fxml.FXML
+    private Label confirmationLabel;
+    @javafx.fxml.FXML
+    private ComboBox<String> companyComboBox;
+    @javafx.fxml.FXML
+    private ComboBox<String> eventComboBox;
+    @javafx.fxml.FXML
+    private Label uploadStatusLabel;
 
     @javafx.fxml.FXML
     public void submitButton(ActionEvent actionEvent) {
-        String company = (companyComboBox != null) ? companyComboBox.getValue() : null;
-        String event   = (eventComboBox   != null) ? eventComboBox.getValue()   : null;
+        String company = companyComboBox != null ? companyComboBox.getValue() : null;
+        String event   = eventComboBox   != null ? eventComboBox.getValue()   : null;
 
-        if (company == null || event == null) {
-            showError("Missing selection", "Please choose both Company and Event before submitting.");
-            actionEvent.consume();
-            return;
-        }
-
-        String summary = String.format("Submitted: company=%s, event=%s", company, event);
         if (confirmationLabel != null) {
-            confirmationLabel.setText(summary);
+            confirmationLabel.setText("Submitted: company=" + company + ", event=" + event);
         }
-        actionEvent.consume(); // mark param as used
+        actionEvent.consume();
     }
 
     @javafx.fxml.FXML
@@ -49,11 +45,19 @@ public class CorporateHealthCoordinatorGoal3Controller {
         navigateToDashboard(actionEvent);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
+    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
+
     private void navigateToDashboard(ActionEvent event) {
+        URL url = this.getClass().getResource(BASE + "CorporateHealthCoordinator.fxml");
+        if (url == null) {
+            showError("Missing FXML",
+                    "Could not find resource: " + BASE + "CorporateHealthCoordinator.fxml" + System.lineSeparator()
+                            + "Make sure it is on the runtime classpath under src/main/resources");
+            return;
+        }
         try {
-            FXMLLoader loader =
-                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
-            Parent root = loader.load();
+            Parent root = FXMLLoader.load(url);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -63,10 +67,10 @@ public class CorporateHealthCoordinatorGoal3Controller {
     }
 
     private void showError(String header, String message) {
-        Alert a = new Alert(Alert.AlertType.ERROR);
-        a.setTitle("Error");
-        a.setHeaderText(header);
-        a.setContentText(message);
-        a.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

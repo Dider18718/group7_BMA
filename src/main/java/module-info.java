@@ -8,6 +8,6 @@ module com.oop.groupseven.group7_bma {
 
     opens com.oop.groupseven.group7_bma to javafx.fxml;
 
-    opens com.oop.groupseven.group7_bma.Zainab to javafx.fxml, javafx.base ;
+    opens com.oop.groupseven.group7_bma.Sujarna to javafx.fxml, javafx.base ;
     exports com.oop.groupseven.group7_bma;
 }

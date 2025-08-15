@@ -14,66 +14,61 @@ import java.io.IOException;
 public class MedicalTransportDriverDashboardController {
 
     @javafx.fxml.FXML
-    public void transportScheduleButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal1.fxml");
+    public void transportScheduleButton(ActionEvent event) {
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal1.fxml");
     }
 
     @javafx.fxml.FXML
-    public void refuelButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal2.fxml");
+    public void tripStatusButton(ActionEvent event) {
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal2.fxml");
     }
 
     @javafx.fxml.FXML
-    public void checkMapButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal3.fxml");
+    public void reportIssueButton(ActionEvent event) {
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal3.fxml");
     }
 
     @javafx.fxml.FXML
-    public void vehicleButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal4.fxml");
+    public void checkMapButton(ActionEvent event) {
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal6.fxml");
     }
 
     @javafx.fxml.FXML
-    public void endofDayButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal5.fxml");
+    public void endofDayButton(ActionEvent event) {
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal7.fxml");
     }
 
     @javafx.fxml.FXML
-    public void tripStatusButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal6.fxml");
+    public void vehicleButton(ActionEvent event) {
+        // NOTE: your FXML filename includes a space before .fxml; kept as-is.
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal8 .fxml");
     }
 
     @javafx.fxml.FXML
-    public void reportIssueButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal7.fxml");
+    public void logOutButton(ActionEvent event) {
+        event.consume(); // mark parameter used
+        javafx.application.Platform.exit();
     }
 
-    @javafx.fxml.FXML
-    public void emergancyButton(ActionEvent actionEvent) {
-        navigate(actionEvent, "MedicalTransportDriverGoal8.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void logOutButton(ActionEvent actionEvent) {
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.close();
-        actionEvent.consume();
-    }
-
-    private void navigate(ActionEvent event, String fxmlName) {
+    // --- helpers ---
+    private void gotoView(ActionEvent event, String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    HelloApplication.class.getResource("Sujarna/" + fxmlName));
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
             Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setHeaderText("Navigation Error");
-            a.setContentText(e.getMessage());
-            a.showAndWait();
+            showError("Navigation Error", e.getMessage());
         }
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void showError(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("Error");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
     }
 }

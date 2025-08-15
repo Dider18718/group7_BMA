@@ -1,122 +1,76 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
 import com.oop.groupseven.group7_bma.HelloApplication;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.time.LocalDateTime;
 
-@SuppressWarnings({ "SpellCheckingInspection", "CanBeFinal" })
+@SuppressWarnings("SpellCheckingInspection")
 public class CorporateHealthCoordinatorGoal7Controller {
 
-    // Defaults keep IntelliJ from warning "never assigned" while FXML still injects at runtime.
-    @javafx.fxml.FXML private ComboBox<String> eventComboBox = new ComboBox<>();
-    @javafx.fxml.FXML private TextField attendanceField = new TextField(); // number of attendees
-    @javafx.fxml.FXML private TextField employedField   = new TextField(); // total eligible employees
-    @javafx.fxml.FXML private ProgressBar participationBar = new ProgressBar(0.0);
-    @javafx.fxml.FXML private Label resultLabel = new Label();
-    @javafx.fxml.FXML private ListView<String> historyListView = new ListView<>();
+    @javafx.fxml.FXML private ComboBox<String> eventComboBox;
+    @javafx.fxml.FXML private TextField attendanceTextField;
+    @javafx.fxml.FXML private Label rateLabel;
+    @javafx.fxml.FXML private Label employedLabel;
 
     @javafx.fxml.FXML
-    public void calculateButton(ActionEvent actionEvent) {
-        // Read values
-        String event = eventComboBox != null ? eventComboBox.getValue() : null;
-        Integer attended = parseInt(attendanceField.getText(), "Attendance");
-        Integer employed = parseInt(employedField.getText(), "Total Employed");
-
-        if (attended == null || employed == null) {
-            actionEvent.consume();
-            return;
+    public void initialize() {
+        if (eventComboBox != null && eventComboBox.getItems().isEmpty()) {
+            eventComboBox.setItems(FXCollections.observableArrayList("CME-001","Camp-2025-01","Camp-2025-02"));
         }
-        if (employed <= 0) {
-            showError("Invalid input", "Total Employed must be greater than 0.");
-            actionEvent.consume();
-            return;
-        }
-        if (attended < 0 || attended > employed) {
-            showError("Invalid input", "Attendance must be between 0 and Total Employed.");
-            actionEvent.consume();
-            return;
-        }
-
-        double rate = (attended * 100.0) / employed;           // percentage
-        double progress = Math.max(0.0, Math.min(1.0, rate / 100.0));
-
-        if (participationBar != null) participationBar.setProgress(progress);
-
-        String labelText = String.format("Participation: %.2f%%  (%,d / %,d)%s",
-                rate, attended, employed,
-                event != null ? "  |  Event: " + event : "");
-        if (resultLabel != null) resultLabel.setText(labelText);
-
-        if (historyListView != null) {
-            String item = String.format("[%s] %s",
-                    LocalDateTime.now(),
-                    labelText);
-            historyListView.getItems().add(item);
-            historyListView.scrollTo(historyListView.getItems().size() - 1);
-        }
-
-        actionEvent.consume();
+        if (rateLabel != null) rateLabel.setText("");
+        if (employedLabel != null) employedLabel.setText("");
     }
 
     @javafx.fxml.FXML
-    public void clearButton(ActionEvent actionEvent) {
-        if (attendanceField != null) attendanceField.clear();
-        if (employedField   != null) employedField.clear();
-        if (participationBar != null) participationBar.setProgress(0.0);
-        if (resultLabel != null) resultLabel.setText("Cleared");
-        actionEvent.consume();
+    public void submitButton(ActionEvent e) {
+        String ev = eventComboBox != null ? eventComboBox.getValue() : null;
+        if (ev == null) { showWarn("Missing", "Select an event."); return; }
+
+        int attended;
+        try { attended = Integer.parseInt(attendanceTextField.getText()); }
+        catch (Exception ex) { showWarn("Invalid", "Attendance must be a number."); return; }
+
+        int capacity = 150; // demo capacity
+        double rate = capacity > 0 ? (attended * 100.0) / capacity : 0.0;
+
+        if (rateLabel != null) rateLabel.setText(String.format("Rate: %.1f%%", rate));
+        if (employedLabel != null) employedLabel.setText("Capacity: " + capacity);
     }
 
     @javafx.fxml.FXML
-    public void backButton(ActionEvent actionEvent) {
-        navigateToDashboard(actionEvent);
-    }
+    public void backButton(ActionEvent event) { navigateToDashboard(event); }
 
-    // ---------- helpers ----------
-
-    private Integer parseInt(String s, String field) {
-        if (s == null) {
-            showError("Missing value", field + " is required.");
-            return null;
-        }
-        String trimmed = s.trim();
-        if (trimmed.isEmpty()) {
-            showError("Missing value", field + " is required.");
-            return null;
-        }
+    private void navigateToDashboard(ActionEvent event) {
         try {
-            return Integer.parseInt(trimmed);
-        } catch (NumberFormatException e) {
-            showError("Invalid number", field + " must be an integer.");
-            return null;
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            showError("Navigation Error", ex.getMessage());
         }
     }
 
+    private void showWarn(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        a.setTitle("Warning");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
+    }
     private void showError(String header, String message) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setTitle("Error");
         a.setHeaderText(header);
         a.setContentText(message);
         a.showAndWait();
-    }
-
-    private void navigateToDashboard(ActionEvent event) {
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            showError("Navigation Error", e.getMessage());
-        }
     }
 }

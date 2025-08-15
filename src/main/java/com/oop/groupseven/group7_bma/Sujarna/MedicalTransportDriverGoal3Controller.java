@@ -1,44 +1,67 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URL;
+import java.time.LocalDateTime;
 
+@SuppressWarnings({ "SpellCheckingInspection", "CanBeFinal" })
 public class MedicalTransportDriverGoal3Controller {
 
-    @javafx.fxml.FXML
-    private Label confirmationLabel;
-    @javafx.fxml.FXML
-    private ComboBox<String> vehicleComboBox;
-    @javafx.fxml.FXML
-    private ComboBox<String> issueTypeComboBox;
-    @javafx.fxml.FXML
-    private TextField titleTextField;
-    @javafx.fxml.FXML
-    private TextArea issueTextArea;
+    // Defaults keep IntelliJ from warning "never assigned" while FXML still injects at runtime.
+    @javafx.fxml.FXML private ComboBox<String> routeComboBox      = new ComboBox<>();
+    @javafx.fxml.FXML private TextField        currentLocationField = new TextField();
+    @javafx.fxml.FXML private TextField        destinationField     = new TextField();
+    @javafx.fxml.FXML private TextArea         issueTextArea        = new TextArea();
+    @javafx.fxml.FXML private ListView<String> updatesListView      = new ListView<>();
+    @javafx.fxml.FXML private Label            statusLabel          = new Label();
 
     @javafx.fxml.FXML
     public void submitButton(ActionEvent actionEvent) {
-        String vehicle = vehicleComboBox != null ? vehicleComboBox.getValue() : null;
-        String issueType = issueTypeComboBox != null ? issueTypeComboBox.getValue() : null;
-        String title = titleTextField != null ? titleTextField.getText() : null;
-        String details = issueTextArea != null ? issueTextArea.getText() : null;
+        String route    = routeComboBox != null ? routeComboBox.getValue() : null;
+        String current  = currentLocationField != null ? currentLocationField.getText() : null;
+        String dest     = destinationField != null ? destinationField.getText() : null;
+        String issue    = issueTextArea != null ? issueTextArea.getText() : null;
 
-        if (confirmationLabel != null) {
-            String msg = "Issue filed"
-                    + (vehicle != null ? " • vehicle=" + vehicle : "")
-                    + (issueType != null ? " • type=" + issueType : "")
-                    + (title != null && !title.isBlank() ? " • title=" + title : "")
-                    + (details != null && !details.isBlank() ? " • details added" : "");
-            confirmationLabel.setText(msg);
+        if ((isBlank(route) && (isBlank(current) || isBlank(dest))) && isBlank(issue)) {
+            showError("Missing data", "Provide Route, or Current+Destination, or an Issue to report.");
+            actionEvent.consume();
+            return;
         }
 
+        StringBuilder sb = new StringBuilder();
+        sb.append("[").append(LocalDateTime.now()).append("] ");
+        if (!isBlank(route)) sb.append("Route=").append(route).append("; ");
+        if (!isBlank(current) || !isBlank(dest)) {
+            sb.append("From=").append(isBlank(current) ? "?" : current)
+                    .append(" -> To=").append(isBlank(dest) ? "?" : dest).append("; ");
+        }
+        if (!isBlank(issue)) sb.append("Issue=").append(issue.trim());
+
+        String entry = sb.toString().trim();
+
+        if (updatesListView != null) {
+            updatesListView.getItems().add(entry);
+            updatesListView.scrollTo(updatesListView.getItems().size() - 1);
+        }
+        if (statusLabel != null) statusLabel.setText("Route checked / issue noted");
+
+        actionEvent.consume();
+    }
+
+    @javafx.fxml.FXML
+    public void clearButton(ActionEvent actionEvent) {
+        if (routeComboBox != null) routeComboBox.getSelectionModel().clearSelection();
+        if (currentLocationField != null) currentLocationField.clear();
+        if (destinationField != null) destinationField.clear();
+        if (issueTextArea != null) issueTextArea.clear();
+        if (statusLabel != null) statusLabel.setText("Cleared");
         actionEvent.consume();
     }
 
@@ -47,31 +70,30 @@ public class MedicalTransportDriverGoal3Controller {
         navigateToDashboard(actionEvent);
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
-    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
+    // ---------- helpers ----------
+
+    private boolean isBlank(String s) {
+        return s == null || s.trim().isEmpty();
+    }
+
+    private void showError(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("Error");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
+    }
 
     private void navigateToDashboard(ActionEvent event) {
-        URL url = this.getClass().getResource(BASE + "MedicalTransportDriverDashboard.fxml");
-        if (url == null) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setHeaderText("Missing FXML");
-            a.setContentText("Could not find resource: " + BASE + "MedicalTransportDriverDashboard.fxml" + System.lineSeparator()
-                    + "Make sure it is on the classpath under src/main/resources");
-            a.showAndWait();
-            return;
-        }
         try {
-            Parent root = FXMLLoader.load(url);
+            FXMLLoader loader =
+                    new FXMLLoader(HelloApplication.class.getResource("Sujarna/MedicalTransportDriverDashboard.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Error");
-            a.setHeaderText("Navigation Error");
-            a.setContentText(e.getMessage());
-            a.showAndWait();
+            showError("Navigation Error", e.getMessage());
         }
     }
 }

@@ -8,7 +8,7 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal3Controller">
-   <children>
+
       <Label alignment="CENTER" layoutX="109.0" layoutY="26.0" prefHeight="35.0" prefWidth="402.0" style="-fx-background-color: #86cce1;" text="Corporate Health Report">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -41,5 +41,5 @@
       </Button>
       <ComboBox fx:id="companyComboBox" editable="true" layoutX="64.0" layoutY="101.0" prefHeight="42.0" prefWidth="214.0" promptText="Select Company" />
       <ComboBox fx:id="eventComboBox" editable="true" layoutX="64.0" layoutY="169.0" prefHeight="42.0" prefWidth="214.0" promptText="Select Event ID" />
-   </children>
+
 </AnchorPane>

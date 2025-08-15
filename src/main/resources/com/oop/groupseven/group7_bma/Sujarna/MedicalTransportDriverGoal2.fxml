@@ -9,7 +9,7 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.MedicalTransportDriverGoal2Controller">
-   <children>
+
       <Label alignment="CENTER" layoutX="136.0" layoutY="25.0" prefHeight="35.0" prefWidth="347.0" style="-fx-background-color: skyblue;" text="Trip Completion Status">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -32,5 +32,5 @@
          </font>
       </Button>
       <TextArea fx:id="remarkTextField" layoutX="336.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" promptText="Add Remark" />
-   </children>
+
 </AnchorPane>

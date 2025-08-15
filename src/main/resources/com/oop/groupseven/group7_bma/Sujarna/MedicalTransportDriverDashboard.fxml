@@ -8,14 +8,14 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.MedicalTransportDriverDashboardController">
-   <children>
+
       <Label alignment="CENTER" layoutX="106.0" layoutY="33.0" prefHeight="35.0" prefWidth="380.0" style="-fx-background-color: #86cce1;" text="Medical Transport Driver App">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <VBox layoutX="45.0" layoutY="87.0" prefHeight="227.0" prefWidth="259.0" spacing="20.0">
-         <children>
+
             <Button mnemonicParsing="false" onAction="#transportScheduleButton" prefHeight="40.0" prefWidth="258.0" text="Transport Schedule">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
@@ -36,10 +36,10 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-         </children>
+
       </VBox>
       <VBox layoutX="326.0" layoutY="87.0" prefHeight="227.0" prefWidth="259.0" spacing="20.0">
-         <children>
+
             <Button mnemonicParsing="false" onAction="#refuelButton" prefHeight="40.0" prefWidth="258.0" text="Refuel Log">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
@@ -60,12 +60,12 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-         </children>
+
       </VBox>
       <Button layoutX="269.0" layoutY="333.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-color: pink;" text="Log Out">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-   </children>
+
 </AnchorPane>

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Zainab.Doctor4_AddNewDiagnosisToAPatientsRecordFromController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Zainab.Doctor4_AddNewDiagnosisToAPatientsRecordFromController">
+   <children>
+      <Label layoutX="218.0" layoutY="25.0" style="-fx-background-color: pink;" text="Add Diagonsis">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="symptomsTextField" layoutX="130.0" layoutY="79.0" />
+      <TextField fx:id="diagonsisNameTextField" layoutX="130.0" layoutY="126.0" />
+      <TextArea fx:id="notesTextField" layoutX="365.0" layoutY="163.0" prefHeight="54.0" prefWidth="200.0" promptText="Notes">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="123.0" layoutY="308.0" mnemonicParsing="false" onAction="#submitButtonOnAction" text="Submit" />
+      <Button layoutX="393.0" layoutY="334.0" mnemonicParsing="false" onAction="#backToDashboardButtonOnAction" style="-fx-background-color: violet;" text="Back to Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="conditionSeverityComboBox" layoutX="55.0" layoutY="187.0" prefWidth="150.0" promptText="Condition severity" />
+      <Button layoutX="53.0" layoutY="243.0" mnemonicParsing="false" onAction="#attachTestResultsOrImagesButtonOnAction" text="Attach test results/images" />
+      <Label layoutX="45.0" layoutY="83.0" text="Symptoms :" />
+      <Label layoutX="30.0" layoutY="130.0" text="Diagonsis Name :" />
+      <Label layoutX="317.0" layoutY="190.0" text="Notes :" />
+   </children>
 </AnchorPane>

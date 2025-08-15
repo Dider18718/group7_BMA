@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="422.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorController">
    <children>
       <Label alignment="TOP_CENTER" layoutX="117.0" layoutY="28.0" prefHeight="35.0" prefWidth="365.0" style="-fx-background-color: #86cce1;" text="Corporate Health Coordinator" textFill="#161818">

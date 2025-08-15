@@ -10,5 +10,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.BookPatientPSRController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Book Appointment"/>
+        <TextField fx:id="patientNameField" layoutX="20" layoutY="60" promptText="Patient Name"/>
+        <TextField fx:id="doctorField" layoutX="20" layoutY="100" promptText="Doctor"/>
+        <TextField fx:id="dateField" layoutX="20" layoutY="140" promptText="Date"/>
+        <Button text="Book" layoutX="20" layoutY="180" onAction="#bookAppointment"/>
+        <Label fx:id="statusLabel" layoutX="20" layoutY="220"/>
+    </children>
 
 </AnchorPane>

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Sujarna.MedicalTransportDriverGoal6Controller"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.MedicalTransportDriverGoal6Controller">
+   <children>
+      <Label alignment="CENTER" layoutX="123.0" layoutY="37.0" prefHeight="35.0" prefWidth="346.0" style="-fx-background-color: skyblue;" text="Check Assigned Route">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="routeInfoLabel" layoutX="52.0" layoutY="119.0" prefHeight="43.0" prefWidth="282.0" style="-fx-background-color: pink;" text="Current Route Info:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="confirmationLabel" layoutX="52.0" layoutY="288.0" prefHeight="19.0" prefWidth="218.0" text="Confirmation Message">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="55.0" layoutY="325.0" mnemonicParsing="false" onAction="#saveButton" text="Save Route">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="409.0" layoutY="325.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="162.0" text="Back to Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

@@ -10,5 +10,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.DischargeRequestController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Discharge Request"/>
+        <TextField fx:id="patientIdField" layoutX="20" layoutY="60" promptText="Patient ID"/>
+        <TextField fx:id="dateField" layoutX="20" layoutY="100" promptText="Discharge Date"/>
+        <TextArea fx:id="summaryArea" layoutX="20" layoutY="140" prefWidth="440" prefHeight="80" promptText="Summary"/>
+        <Button text="Submit" layoutX="20" layoutY="230" onAction="#submit"/>
+        <Label fx:id="statusLabel" layoutX="90" layoutY="234"/>
+    </children>
 
 </AnchorPane>

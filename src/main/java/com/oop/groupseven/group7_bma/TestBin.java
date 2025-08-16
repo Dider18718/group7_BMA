@@ -1,3 +1,5 @@
+package com.oop.groupseven.group7_bma;
+
 import com.oop.groupseven.group7_bma.storage.BinStorage;
 import com.oop.groupseven.group7_bma.storage.InspectionRecord;
 

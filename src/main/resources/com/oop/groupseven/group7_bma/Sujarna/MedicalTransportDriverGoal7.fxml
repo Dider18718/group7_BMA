@@ -8,7 +8,8 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.MedicalTransportDriverGoal7Controller">
-   <children>
+    <children>
+
       <Label alignment="CENTER" layoutX="151.0" layoutY="30.0" prefHeight="35.0" prefWidth="279.0" style="-fx-background-color: skyblue;" text="End of Day Trip">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -31,5 +32,5 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-   </children>
+    </children>
 </AnchorPane>

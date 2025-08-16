@@ -11,7 +11,8 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Sujarna.CorporateHealthCoordinatorGoal8Controller">
-   <children>
+    <children>
+
       <Label alignment="CENTER" layoutX="142.0" layoutY="46.0" prefHeight="35.0" prefWidth="315.0" style="-fx-background-color: #86cce1;" text="Post Event Feedback">
          <font>
             <Font name="System Bold Italic" size="24.0" />
@@ -37,5 +38,5 @@
       <CheckBox fx:id="responeCheckBox" layoutX="53.0" layoutY="245.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" text="Anonymous Responses" />
       <TextField fx:id="surveyTextField" layoutX="370.0" layoutY="116.0" prefHeight="35.0" prefWidth="175.0" promptText="Add Survey Question" />
       <DatePicker layoutX="370.0" layoutY="175.0" prefHeight="35.0" prefWidth="175.0" promptText="Set Deadline" />
-   </children>
+    </children>
 </AnchorPane>

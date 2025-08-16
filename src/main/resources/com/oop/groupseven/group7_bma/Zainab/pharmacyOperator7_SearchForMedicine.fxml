@@ -26,7 +26,7 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Button>
-      <TableView layoutX="81.0" layoutY="226.0" prefHeight="106.0" prefWidth="437.0">
+      <TableView fx:id="searchResultsTableView" layoutX="81.0" layoutY="226.0" prefHeight="106.0" prefWidth="437.0">
         <columns>
           <TableColumn fx:id="colSearchResults" prefWidth="436.8000122070313" text="Search Results" />
         </columns>

@@ -17,7 +17,7 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="73.0" layoutY="87.0" prefHeight="151.0" prefWidth="471.0">
+      <TableView fx:id="historyTableView" layoutX="73.0" layoutY="87.0" prefHeight="151.0" prefWidth="471.0">
         <columns>
           <TableColumn fx:id="colDate" prefWidth="95.19997787475586" text="Data" />
           <TableColumn fx:id="colType" prefWidth="181.6000518798828" text="Type" />

@@ -16,8 +16,9 @@ public class HelloApplication extends Application {
         String start = System.getProperty("start", "corporate").toLowerCase();
 
         String fxml = start.equals("driver")
-                ? "Sujarna/MedicalTransportDriverDashboard.fxml"
-                : "Sujarna/CorporateHealthCoordinator.fxml";
+                ? "Zainab/pharmacyOperatorDashboard.fxml"
+                : "Zainab/doctorDashboard.fxml";
+
 
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxml));
         Parent root = loader.load();

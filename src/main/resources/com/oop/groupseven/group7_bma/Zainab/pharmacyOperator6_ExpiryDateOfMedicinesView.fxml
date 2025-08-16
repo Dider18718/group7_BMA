@@ -14,7 +14,7 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="55.0" layoutY="99.0" prefHeight="155.0" prefWidth="522.0">
+      <TableView fx:id="expiryTableView" layoutX="55.0" layoutY="99.0" prefHeight="155.0" prefWidth="522.0">
         <columns>
           <TableColumn fx:id="colMedicine" prefWidth="148.0" text="Medicine" />
           <TableColumn fx:id="colExpiryDate" prefWidth="173.60003662109375" text="Expiry Date" />

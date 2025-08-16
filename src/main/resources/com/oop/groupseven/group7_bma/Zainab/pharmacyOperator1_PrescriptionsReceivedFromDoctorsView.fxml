@@ -15,7 +15,7 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="95.0" layoutY="73.0" prefHeight="200.0" prefWidth="414.0">
+      <TableView fx:id="prescriptionTableView" layoutX="95.0" layoutY="73.0" prefHeight="200.0" prefWidth="414.0">
         <columns>
           <TableColumn fx:id="colTime" prefWidth="89.59990692138672" text="Time" />
           <TableColumn fx:id="colDoctor" prefWidth="92.800048828125" text="Doctor" />

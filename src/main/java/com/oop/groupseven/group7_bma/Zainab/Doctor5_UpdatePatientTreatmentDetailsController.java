@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -34,6 +35,31 @@ public class Doctor5_UpdatePatientTreatmentDetailsController {
 
     @javafx.fxml.FXML
     public void submitChangesButtonOnAction(ActionEvent actionEvent) {
+        String medicine = medicineNameTextField.getText();
+        String dosage = dosageTextField.getText();
+        String therapy = therapyDietInstructionsTextArea.getText();
+
+        if (medicine.isBlank() || dosage.isBlank()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Medicine name and dosage are required.");
+            alert.showAndWait();
+            return;
+        }
+
+        TreatmentDetails treatment = new TreatmentDetails(medicine, dosage, therapy);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Treatment Updated");
+        alert.setHeaderText("Treatment details recorded successfully");
+        alert.setContentText(treatment.toString());
+        alert.showAndWait();
+
+        // Clear inputs after submission
+        medicineNameTextField.clear();
+        dosageTextField.clear();
+        therapyDietInstructionsTextArea.clear();
     }
 
     DoctorDashboardController DoctorDashboardController ;

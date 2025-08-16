@@ -10,5 +10,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.AssignShiftController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Assign Shift"/>
+        <TextField fx:id="doctorNameField" layoutX="20" layoutY="60" promptText="Doctor Name"/>
+        <TextField fx:id="dateField" layoutX="20" layoutY="100" promptText="Date (e.g., 2025-08-02)"/>
+        <TextField fx:id="timeField" layoutX="20" layoutY="140" promptText="Time Slot"/>
+        <Button text="Assign" layoutX="20" layoutY="180" onAction="#assignShift"/>
+        <Label fx:id="statusLabel" layoutX="20" layoutY="220"/>
+    </children>
 
 </AnchorPane>

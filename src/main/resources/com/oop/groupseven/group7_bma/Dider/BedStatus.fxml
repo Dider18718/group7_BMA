@@ -10,5 +10,11 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.BedStatusController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Bed Availability"/>
+        <ComboBox fx:id="wardBox" layoutX="20" layoutY="60" prefWidth="180"/>
+        <Button text="Load" layoutX="220" layoutY="60" onAction="#load"/>
+        <TextArea fx:id="resultArea" layoutX="20" layoutY="100" prefWidth="420" prefHeight="130" editable="false"/>
+    </children>
 
 </AnchorPane>

@@ -10,5 +10,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.EmergencyAlertController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Emergency Alert"/>
+        <TextField fx:id="titleField" layoutX="20" layoutY="60" promptText="Alert Title"/>
+        <ComboBox fx:id="priorityBox" layoutX="260" layoutY="60" prefWidth="200"/>
+        <TextArea fx:id="messageArea" layoutX="20" layoutY="100" prefWidth="440" prefHeight="100" promptText="Message"/>
+        <Button text="Send Alert" layoutX="20" layoutY="210" onAction="#send"/>
+        <Label fx:id="statusLabel" layoutX="120" layoutY="214"/>
+    </children>
 
 </AnchorPane>

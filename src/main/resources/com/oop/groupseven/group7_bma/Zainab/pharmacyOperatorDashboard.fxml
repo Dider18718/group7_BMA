@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="pharmacyOperatorDashboardBorderPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Zainab.PharmacyOperatorDashboardController">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="124.0" layoutY="14.0" style="-fx-background-color: pink;" text="Pharmacy Operator DashBoard">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="pharmacyOperatorDashboardTextArea" layoutX="76.0" layoutY="80.0" prefHeight="330.0" prefWidth="448.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox prefWidth="300.0" style="-fx-background-color: rgba(100, 100, 100, 100, 100, 100, 100, 100, 100, 1);" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#prescriptionsReceivedFromDoctorsButtonOnAction" prefWidth="300.0" text="Prescriptions received from doctors">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#verifyAuthenticityOfElectronicPrescriptionsButtonOnAction" prefWidth="300.0" text="Verify Authenticity of Electronic Prescriptions">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#dispenseMedicinesToPatientsButtonOnAction" prefWidth="300.0" text="Dispense Medicines to Patients">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#recordOfMedicinesDispensedButtonOnAction" prefWidth="300.0" text="Record of Medicines Dispensed">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#notifyOfOutOfStockMedicinesButtonOnAction" prefWidth="300.0" text="Notify of Out-of-Stock Medicines">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#viewExpiryDateOfMedicinesButtonOnAction" prefWidth="300.0" text="View Expiry Date of Medicines">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#searchForMedicinButtonOnAction" prefWidth="300.0" text="Search for Medicine">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#manageMedicineInventoryLevelsButtonOnAction" prefWidth="300.0" text="Manage Medicine Inventory Levels">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#logOutButtonOnAction" prefHeight="51.0" prefWidth="300.0" style="-fx-background-color: violet;" text="Log Out">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

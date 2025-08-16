@@ -10,5 +10,12 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.AddDoctorViewController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Add Doctor"/>
+        <TextField fx:id="nameField" layoutX="20" layoutY="60" promptText="Doctor Name"/>
+        <TextField fx:id="departmentField" layoutX="20" layoutY="100" promptText="Department"/>
+        <Button fx:id="submitButton" layoutX="20" layoutY="150" text="Submit" onAction="#handleSubmit"/>
+        <Label fx:id="messageLabel" layoutX="20" layoutY="200"/>
+    </children>
 
 </AnchorPane>

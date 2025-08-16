@@ -10,5 +10,11 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.BillingDetailsController"
             prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Billing Details"/>
+        <TextField fx:id="patientIdField" layoutX="20" layoutY="60" promptText="Patient ID"/>
+        <Button text="Load" layoutX="220" layoutY="60" onAction="#load"/>
+        <TextArea fx:id="billArea" layoutX="20" layoutY="100" prefWidth="460" prefHeight="160" editable="false"/>
+    </children>
 
 </AnchorPane>

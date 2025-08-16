@@ -10,5 +10,12 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.EditAppointmentPSRController"
             prefHeight="400.0" prefWidth="600.0">
+    <Label layoutX="20" layoutY="20" text="Edit Appointment"/>
+    <TextField fx:id="appointmentIdField" layoutX="20" layoutY="60" promptText="Appointment ID"/>
+    <TextField fx:id="newDateField" layoutX="20" layoutY="100" promptText="New Date (YYYY-MM-DD)"/>
+    <TextField fx:id="newTimeField" layoutX="260" layoutY="100" promptText="New Time (e.g., 10:30)"/>
+    <Button text="Update" layoutX="20" layoutY="140" onAction="#update"/>
+    <Label fx:id="statusLabel" layoutX="90" layoutY="144"/>
+</children>
 
 </AnchorPane>

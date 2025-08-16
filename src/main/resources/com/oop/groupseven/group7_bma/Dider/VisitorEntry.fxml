@@ -10,5 +10,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.VisitorEntryController"
             prefHeight="400.0" prefWidth="600.0" >
+    <children>
+        <Label layoutX="20" layoutY="20" text="Visitor Entry"/>
+        <TextField fx:id="visitorNameField" layoutX="20" layoutY="60" promptText="Visitor Name"/>
+        <TextField fx:id="purposeField" layoutX="20" layoutY="100" promptText="Purpose"/>
+        <TextField fx:id="hoursField" layoutX="260" layoutY="100" promptText="Visiting Hours"/>
+        <Button text="Log Entry" layoutX="20" layoutY="140" onAction="#logEntry"/>
+        <Label fx:id="statusLabel" layoutX="100" layoutY="144"/>
+    </children>
 
 </AnchorPane>

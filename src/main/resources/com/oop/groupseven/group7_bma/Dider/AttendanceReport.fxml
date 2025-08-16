@@ -34,6 +34,7 @@
 
         <!-- Buttons -->
         <Button layoutX="160.0" layoutY="260.0" text="Generate" onAction="#generateReport"/>
+
         <Button layoutX="250.0" layoutY="260.0" text="Clear" onAction="#clearForm"/>
         <Button layoutX="320.0" layoutY="260.0" text="Back" onAction="#handleBack"/>
     </children>

@@ -31,6 +31,7 @@ public class EmergencyAlertController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         alertTitleField.clear();
         alertMessageArea.clear();
         statusLabel.setText("");

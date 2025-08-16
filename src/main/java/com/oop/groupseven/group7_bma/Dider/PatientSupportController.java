@@ -57,6 +57,7 @@ public class PatientSupportController {
 
     @FXML
     public void handleLogout(ActionEvent event) {
+
         SceneSwitcher.switchScene((Node) event.getSource(),
                 "Login.fxml", "Login");
     }

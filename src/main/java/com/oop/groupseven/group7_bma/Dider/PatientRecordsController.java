@@ -43,6 +43,7 @@ public class PatientRecordsController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         patientNameField.clear();
         ageField.clear();
         conditionField.clear();

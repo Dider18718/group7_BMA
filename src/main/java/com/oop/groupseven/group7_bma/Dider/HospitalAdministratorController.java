@@ -13,6 +13,7 @@ public class HospitalAdministratorController {
 
     @FXML
     private void openAddDoctor(ActionEvent event) {
+
         SceneSwitcher.switchScene((Node) event.getSource(),
                 "AddDoctor.fxml", "Add Doctor Profile");
     }

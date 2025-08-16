@@ -27,6 +27,7 @@ public class DischargeRequestController {
     @FXML
     public void clearForm(ActionEvent event) {
         patientNameField.clear();
+
         reasonArea.clear();
         statusLabel.setText("");
     }

@@ -27,6 +27,7 @@
 
         <!-- Date -->
         <Label layoutX="50.0" layoutY="190.0" text="Date:"/>
+
         <DatePicker fx:id="shiftDatePicker" layoutX="200.0" layoutY="185.0" prefWidth="200.0"/>
 
         <!-- Status -->

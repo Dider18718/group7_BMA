@@ -24,6 +24,7 @@ public class VisitorEntryController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         visitorNameField.clear();
         patientNameField.clear();
         entryTimeField.clear();

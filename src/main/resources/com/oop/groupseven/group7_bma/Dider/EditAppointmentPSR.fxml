@@ -25,6 +25,7 @@
         <Label layoutX="40.0" layoutY="180.0" text="New Time:"/>
         <ComboBox fx:id="timeCombo" layoutX="200.0" layoutY="175.0" prefWidth="150.0"/>
 
+
         <Label fx:id="statusLabel" layoutX="200.0" layoutY="220.0" textFill="green"/>
 
         <Button layoutX="200.0" layoutY="260.0" text="Update" onAction="#updateAppointment"/>

@@ -24,6 +24,7 @@ public class SupportTicketsController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         queryArea.clear();
         responseArea.clear();
         statusLabel.setText("");

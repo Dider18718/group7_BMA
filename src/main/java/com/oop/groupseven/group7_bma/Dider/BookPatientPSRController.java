@@ -31,6 +31,7 @@ public class BookPatientPSRController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         patientNameField.clear();
         doctorField.clear();
         datePicker.setValue(null);

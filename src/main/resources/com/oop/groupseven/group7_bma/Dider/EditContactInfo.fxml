@@ -22,6 +22,7 @@
         <Label layoutX="40.0" layoutY="130.0" text="New Contact:"/>
         <TextField fx:id="contactField" layoutX="180.0" layoutY="125.0" prefWidth="200.0"/>
 
+
         <Label fx:id="statusLabel" layoutX="180.0" layoutY="170.0" textFill="green"/>
 
         <Button layoutX="180.0" layoutY="200.0" text="Update" onAction="#updateContact"/>

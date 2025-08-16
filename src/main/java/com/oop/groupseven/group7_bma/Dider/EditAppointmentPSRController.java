@@ -30,6 +30,7 @@ public class EditAppointmentPSRController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         patientNameField.clear();
         datePicker.setValue(null);
         timeCombo.setValue(null);

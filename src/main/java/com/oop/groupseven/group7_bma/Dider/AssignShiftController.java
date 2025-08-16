@@ -11,7 +11,7 @@ import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 /**
  * Controller for assigning shifts to doctors.
- * Matches CRA: User-5 Goal-2 workflow.
+ * CRA: User-5 Goal-2 workflow.
  */
 public class AssignShiftController {
 

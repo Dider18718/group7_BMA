@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 /**
- * Simplified controller for staff attendance reports.
+ * Controller for staff attendance reports.
  * User 5 - Goal 5.
  */
 public class AttendanceReportController {

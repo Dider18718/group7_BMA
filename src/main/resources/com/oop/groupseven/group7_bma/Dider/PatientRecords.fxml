@@ -33,6 +33,7 @@
         <Label layoutX="40.0" layoutY="230.0" text="Last Visit:"/>
         <TextField fx:id="lastVisitField" layoutX="160.0" layoutY="225.0" prefWidth="200.0"/>
 
+
         <!-- Status -->
         <Label fx:id="statusLabel" layoutX="160.0" layoutY="270.0" textFill="green"/>
 

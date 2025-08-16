@@ -32,6 +32,7 @@ public class RegisterPatientController {
 
     @FXML
     public void clearForm(ActionEvent event) {
+
         nameField.clear();
         ageField.clear();
         contactField.clear();

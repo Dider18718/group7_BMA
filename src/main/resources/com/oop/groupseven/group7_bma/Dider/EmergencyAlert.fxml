@@ -17,6 +17,7 @@
             </font>
         </Label>
 
+
         <!-- Alert Title -->
         <Label layoutX="40.0" layoutY="80.0" text="Alert Title:"/>
         <TextField fx:id="alertTitleField" layoutX="160.0" layoutY="75.0" prefWidth="300.0"/>

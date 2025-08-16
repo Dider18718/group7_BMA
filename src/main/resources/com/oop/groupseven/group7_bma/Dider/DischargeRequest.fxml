@@ -24,6 +24,7 @@
 
         <Label fx:id="statusLabel" layoutX="180.0" layoutY="220.0" textFill="green"/>
 
+
         <Button layoutX="180.0" layoutY="260.0" text="Process" onAction="#processDischarge"/>
         <Button layoutX="260.0" layoutY="260.0" text="Clear" onAction="#clearForm"/>
         <Button layoutX="330.0" layoutY="260.0" text="Back" onAction="#handleBack"/>

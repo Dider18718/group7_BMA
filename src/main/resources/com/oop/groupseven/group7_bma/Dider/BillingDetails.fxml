@@ -19,6 +19,7 @@
         <Label layoutX="40.0" layoutY="80.0" text="Patient Name:"/>
         <TextField fx:id="patientNameField" layoutX="180.0" layoutY="75.0" prefWidth="300.0"/>
 
+
         <Label fx:id="billingInfoLabel" layoutX="180.0" layoutY="130.0" text="Billing info will appear here" wrapText="true"/>
 
         <Button layoutX="180.0" layoutY="200.0" text="View" onAction="#viewBilling"/>

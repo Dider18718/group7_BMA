@@ -25,6 +25,7 @@ public class EditContactInfoController {
     @FXML
     public void clearForm(ActionEvent event) {
         patientNameField.clear();
+
         contactField.clear();
         statusLabel.setText("");
     }

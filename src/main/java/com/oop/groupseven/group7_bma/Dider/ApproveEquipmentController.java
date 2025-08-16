@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 /**
- * Controller for approving or rejecting equipment requests.
  * User 5 - Goal 4.
  */
 public class ApproveEquipmentController {

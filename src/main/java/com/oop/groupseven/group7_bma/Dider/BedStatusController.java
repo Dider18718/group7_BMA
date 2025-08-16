@@ -20,6 +20,7 @@ public class BedStatusController {
 
     @FXML
     public void updateBedStatus(ActionEvent event) {
+
         if (wardField.getText().isEmpty() || availableBedsField.getText().isEmpty()) {
             statusLabel.setText("Please fill all fields.");
         } else {

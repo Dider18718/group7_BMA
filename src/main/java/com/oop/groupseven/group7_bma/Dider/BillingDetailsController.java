@@ -17,6 +17,7 @@ public class BillingDetailsController {
         if (patientNameField.getText().isEmpty()) {
             billingInfoLabel.setText("Enter patient name.");
         } else {
+
             // TODO: Fetch from DB
             billingInfoLabel.setText("Billing Details: Room - $500, Medications - $150");
         }

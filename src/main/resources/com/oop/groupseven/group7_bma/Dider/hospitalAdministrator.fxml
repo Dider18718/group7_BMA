@@ -15,6 +15,7 @@
             <font><Font name="System Bold" size="22.0"/></font>
         </Label>
 
+
         <!-- Buttons for 8 Goals -->
         <Button layoutX="50.0" layoutY="80.0"  text="Add New Doctor"          onAction="#openAddDoctor"/>
         <Button layoutX="250.0" layoutY="80.0" text="Assign Shift"            onAction="#openAssignShift"/>

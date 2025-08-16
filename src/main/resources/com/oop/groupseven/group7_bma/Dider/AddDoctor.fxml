@@ -17,6 +17,7 @@
             </font>
         </Label>
 
+
         <!-- Doctor Name -->
         <Label layoutX="50.0" layoutY="90.0" text="Doctor Name:"/>
         <TextField fx:id="nameField" layoutX="200.0" layoutY="85.0" prefWidth="300.0"/>

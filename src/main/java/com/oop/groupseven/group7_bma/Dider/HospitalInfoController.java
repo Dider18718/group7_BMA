@@ -22,6 +22,7 @@ public class HospitalInfoController {
                 contactField.getText().isEmpty()) {
             statusLabel.setText("Fill in all fields.");
         } else {
+
             // TODO: Save to DB
             statusLabel.setText("Hospital information updated.");
         }

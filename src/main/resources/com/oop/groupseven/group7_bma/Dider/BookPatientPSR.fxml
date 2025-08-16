@@ -28,6 +28,7 @@
         <Label layoutX="40.0" layoutY="230.0" text="Time:"/>
         <ComboBox fx:id="timeCombo" layoutX="170.0" layoutY="225.0" prefWidth="150.0"/>
 
+
         <Label fx:id="statusLabel" layoutX="170.0" layoutY="270.0" textFill="green"/>
 
         <Button layoutX="170.0" layoutY="300.0" text="Book" onAction="#bookAppointment"/>

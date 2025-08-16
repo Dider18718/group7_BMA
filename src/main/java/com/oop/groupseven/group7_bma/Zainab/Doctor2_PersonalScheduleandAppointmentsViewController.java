@@ -23,8 +23,6 @@ public class Doctor2_PersonalScheduleandAppointmentsViewController {
     @javafx.fxml.FXML
     private TableColumn colPurpose;
     @javafx.fxml.FXML
-    private DatePicker selectDatePicker;
-    @javafx.fxml.FXML
     private TableColumn colStatus;
 
     @javafx.fxml.FXML
@@ -50,4 +48,8 @@ public class Doctor2_PersonalScheduleandAppointmentsViewController {
     DoctorDashboardController DoctorDashboardController ;
 
     public void setter(TextArea doctorDashboardTextArea) { this.DoctorDashboardController = DoctorDashboardController ; }
+
+    @javafx.fxml.FXML
+    public void selectDatePickerOnAction(ActionEvent actionEvent) {
+    }
 }

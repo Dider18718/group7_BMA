@@ -14,8 +14,6 @@ import java.io.IOException;
 public class Doctor1_AssignedPatientListViewController
 {
     @javafx.fxml.FXML
-    private TextField appointmentTimeTextField;
-    @javafx.fxml.FXML
     private TableColumn colPatientName;
     @javafx.fxml.FXML
     private TextField quickSearchTextField;
@@ -24,11 +22,9 @@ public class Doctor1_AssignedPatientListViewController
     @javafx.fxml.FXML
     private TableColumn colAppointmentTime;
     @javafx.fxml.FXML
-    private TextField patientNameTextField;
-    @javafx.fxml.FXML
     private TableView patientTableView;
     @javafx.fxml.FXML
-    private ComboBox departmentComboBox;
+    private TableColumn colPatientID;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -57,4 +53,8 @@ public class Doctor1_AssignedPatientListViewController
     DoctorDashboardController DoctorDashboardController ;
 
     public void setter(TextArea doctorDashboardTextArea) { this.DoctorDashboardController = DoctorDashboardController ; }
+
+    @javafx.fxml.FXML
+    public void selectDatePickerOnAction(ActionEvent actionEvent) {
+    }
 }

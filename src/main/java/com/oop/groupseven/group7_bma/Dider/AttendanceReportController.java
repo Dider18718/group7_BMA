@@ -1,18 +1,60 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
+/**
+ * Simplified controller for staff attendance reports.
+ * User 5 - Goal 5.
+ */
 public class AttendanceReportController {
-    @FXML private TextField departmentField, monthField;
-    @FXML private TextArea reportArea;
 
-    @FXML private void generate() {
-        if (departmentField.getText().isEmpty() || monthField.getText().isEmpty()) {
-            reportArea.setText("Select Department and Month.");
-            return;
+    @FXML
+    private TextField staffNameField;
+
+    @FXML
+    private DatePicker attendanceDatePicker;
+
+    @FXML
+    private ComboBox<String> statusCombo;
+
+    @FXML
+    private Label messageLabel;
+
+    @FXML
+    public void initialize() {
+        statusCombo.getItems().addAll("Present", "Absent", "Late");
+    }
+
+    @FXML
+    public void generateReport(ActionEvent event) {
+        if (staffNameField.getText().isEmpty() ||
+                attendanceDatePicker.getValue() == null ||
+                statusCombo.getValue() == null) {
+            messageLabel.setText("Fill in all fields.");
+        } else {
+            // TODO: Save to DB or generate file
+            messageLabel.setText("Attendance recorded successfully.");
         }
-        reportArea.setText("Dept: " + departmentField.getText() + "\nMonth: " + monthField.getText()
-                + "\nPresent: 92%\nAbsent: 8%\nRemarks: Stable attendance.");
+    }
+
+    @FXML
+    public void clearForm(ActionEvent event) {
+        staffNameField.clear();
+        attendanceDatePicker.setValue(null);
+        statusCombo.setValue(null);
+        messageLabel.setText("");
+    }
+
+    @FXML
+    public void handleBack(ActionEvent event) {
+        SceneSwitcher.switchScene((Node) event.getSource(),
+                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
     }
 }

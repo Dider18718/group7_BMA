@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.EmergencyAlertController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Emergency Alert"/>
-        <TextField fx:id="titleField" layoutX="20" layoutY="60" promptText="Alert Title"/>
-        <ComboBox fx:id="priorityBox" layoutX="260" layoutY="60" prefWidth="200"/>
-        <TextArea fx:id="messageArea" layoutX="20" layoutY="100" prefWidth="440" prefHeight="100" promptText="Message"/>
-        <Button text="Send Alert" layoutX="20" layoutY="210" onAction="#send"/>
-        <Label fx:id="statusLabel" layoutX="120" layoutY="214"/>
-    </children>
+            prefHeight="350.0" prefWidth="700.0">
 
+    <children>
+        <!-- Title -->
+        <Label layoutX="20.0" layoutY="20.0" text="Create Emergency Alert">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <!-- Alert Title -->
+        <Label layoutX="40.0" layoutY="80.0" text="Alert Title:"/>
+        <TextField fx:id="alertTitleField" layoutX="160.0" layoutY="75.0" prefWidth="300.0"/>
+
+        <!-- Alert Message -->
+        <Label layoutX="40.0" layoutY="130.0" text="Message:"/>
+        <TextArea fx:id="alertMessageArea" layoutX="160.0" layoutY="125.0" prefWidth="350.0" prefHeight="100.0"/>
+
+        <!-- Status -->
+        <Label fx:id="statusLabel" layoutX="160.0" layoutY="240.0" textFill="green"/>
+
+        <!-- Buttons -->
+        <Button layoutX="160.0" layoutY="270.0" text="Send" onAction="#sendAlert"/>
+        <Button layoutX="220.0" layoutY="270.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="280.0" layoutY="270.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

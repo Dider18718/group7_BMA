@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.SupportTicketsController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Support Tickets"/>
-        <TextField fx:id="ticketIdField" layoutX="20" layoutY="60" promptText="Ticket ID"/>
-        <TextArea fx:id="questionArea" layoutX="20" layoutY="100" prefWidth="460" prefHeight="100" promptText="(Mock) Ticket content here..." />
-        <TextField fx:id="replyField" layoutX="20" layoutY="210" promptText="Type reply"/>
-        <Button text="Send Reply" layoutX="20" layoutY="245" onAction="#sendReply"/>
-        <Label fx:id="statusLabel" layoutX="120" layoutY="249"/>
-    </children>
+            prefHeight="400.0" prefWidth="700.0">
 
+    <children>
+        <Label layoutX="20.0" layoutY="20.0" text="Respond to Patient Queries">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <Label layoutX="40.0" layoutY="80.0" text="Query:"/>
+        <TextArea fx:id="queryArea" layoutX="180.0" layoutY="75.0" prefWidth="400.0" prefHeight="100.0"/>
+
+        <Label layoutX="40.0" layoutY="190.0" text="Response:"/>
+        <TextArea fx:id="responseArea" layoutX="180.0" layoutY="185.0" prefWidth="400.0" prefHeight="100.0"/>
+
+        <Label fx:id="statusLabel" layoutX="180.0" layoutY="300.0" textFill="green"/>
+
+        <Button layoutX="180.0" layoutY="330.0" text="Send" onAction="#sendResponse"/>
+        <Button layoutX="240.0" layoutY="330.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="300.0" layoutY="330.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

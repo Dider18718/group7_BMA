@@ -1,18 +1,58 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
+/**
+ * Simplified controller for managing patient records.
+ * User 5 - Goal 3.
+ */
 public class PatientRecordsController {
-    @FXML private TextField patientIdField;
-    @FXML private TextArea resultArea;
 
-    @FXML private void search() {
+    @FXML
+    private TextField patientNameField;
 
-        String id = patientIdField.getText().trim();
+    @FXML
+    private TextField ageField;
 
-        if (id.isEmpty()) { resultArea.setText("Enter a Patient ID."); return; }
+    @FXML
+    private TextField conditionField;
 
-        resultArea.setText("Patient ID: " + id + "\nName: John Doe\nAge: 45\nDiagnosis: Hypertension\nLast Visit: 2025-07-10");
+    @FXML
+    private TextField lastVisitField;
+
+    @FXML
+    private Label statusLabel;
+
+    @FXML
+    public void saveRecord(ActionEvent event) {
+        if (patientNameField.getText().isEmpty() ||
+                ageField.getText().isEmpty() ||
+                conditionField.getText().isEmpty() ||
+                lastVisitField.getText().isEmpty()) {
+            statusLabel.setText("Please complete all fields.");
+        } else {
+            // TODO: Save to database
+            statusLabel.setText("Patient record saved.");
+        }
+    }
+
+    @FXML
+    public void clearForm(ActionEvent event) {
+        patientNameField.clear();
+        ageField.clear();
+        conditionField.clear();
+        lastVisitField.clear();
+        statusLabel.setText("");
+    }
+
+    @FXML
+    public void handleBack(ActionEvent event) {
+        SceneSwitcher.switchScene((Node) event.getSource(),
+                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
     }
 }

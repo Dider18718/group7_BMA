@@ -10,20 +10,24 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Choose which screen to start with:
-        // -Dstart=driver  -> MedicalTransportDriverDashboard.fxml
-        // anything else or unset -> CorporateHealthCoordinator.fxml
-        String start = System.getProperty("start", "corporate").toLowerCase();
+        // 👇 Choose which user to start with
+        // Run with:  java -Duser=admin   -> HospitalAdministrator.fxml
+        //            java -Duser=psr     -> PatientSupport.fxml
+        // Default (if nothing set)      -> HospitalAdministrator.fxml
 
-        String fxml = start.equals("driver")
-                ? "Zainab/pharmacyOperatorDashboard.fxml"
-                : "Zainab/doctorDashboard.fxml";
+        String user = System.getProperty("user", "admin").toLowerCase();
 
+        String fxml;
+        if (user.equals("psr")) {
+            fxml = "Dider/PatientSupport.fxml";   // your PSR dashboard
+        } else {
+            fxml = "Dider/HospitalAdministrator.fxml"; // your Admin dashboard
+        }
 
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxml));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/" + fxml));
         Parent root = loader.load();
 
-        stage.setTitle("BMA");
+        stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root));
         stage.show();
     }

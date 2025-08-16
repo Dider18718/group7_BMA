@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.ApproveEquipmentController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Approve Equipment Request"/>
-        <TextField fx:id="requestIdField" layoutX="20" layoutY="60" promptText="Request ID"/>
-        <TextField fx:id="equipmentField" layoutX="20" layoutY="100" promptText="Equipment Name"/>
-        <Button text="Approve" layoutX="20" layoutY="140" onAction="#approve"/>
-        <Label fx:id="statusLabel" layoutX="20" layoutY="180"/>
-    </children>
+            prefHeight="400.0" prefWidth="700.0">
 
+    <children>
+        <!-- Title -->
+        <Label layoutX="20.0" layoutY="20.0" text="Equipment Request Approval">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <!-- Request ID -->
+        <Label layoutX="40.0" layoutY="80.0" text="Request ID:"/>
+        <TextField fx:id="requestIdField" layoutX="160.0" layoutY="75.0" prefWidth="200.0"/>
+
+        <!-- Equipment Name -->
+        <Label layoutX="40.0" layoutY="130.0" text="Equipment Name:"/>
+        <TextField fx:id="equipmentNameField" layoutX="160.0" layoutY="125.0" prefWidth="300.0"/>
+
+        <!-- Status Label -->
+
+        <Label fx:id="statusLabel" layoutX="160.0" layoutY="170.0" textFill="green"/>
+
+        <!-- Buttons -->
+        <Button layoutX="160.0" layoutY="210.0" text="Approve" onAction="#approveRequest"/>
+        <Button layoutX="250.0" layoutY="210.0" text="Reject" onAction="#rejectRequest"/>
+        <Button layoutX="340.0" layoutY="210.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

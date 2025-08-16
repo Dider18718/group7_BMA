@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.HospitalInfoController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Hospital Info Settings"/>
-        <TextField fx:id="contactField" layoutX="20" layoutY="60" promptText="Contact Number"/>
-        <TextField fx:id="addressField" layoutX="20" layoutY="100" promptText="Address"/>
-        <TextField fx:id="servicesField" layoutX="20" layoutY="140" promptText="New Service (optional)"/>
-        <Button text="Save" layoutX="20" layoutY="180" onAction="#save"/>
-        <Label fx:id="statusLabel" layoutX="20" layoutY="210"/>
-    </children>
+            prefHeight="400.0" prefWidth="700.0">
 
+    <children>
+        <!-- Title -->
+        <Label layoutX="20.0" layoutY="20.0" text="Update Hospital Information">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <!-- Name -->
+        <Label layoutX="40.0" layoutY="80.0" text="Hospital Name:"/>
+        <TextField fx:id="hospitalNameField" layoutX="180.0" layoutY="75.0" prefWidth="300.0"/>
+
+        <!-- Address -->
+        <Label layoutX="40.0" layoutY="130.0" text="Address:"/>
+        <TextField fx:id="addressField" layoutX="180.0" layoutY="125.0" prefWidth="300.0"/>
+
+        <!-- Contact -->
+        <Label layoutX="40.0" layoutY="180.0" text="Contact:"/>
+        <TextField fx:id="contactField" layoutX="180.0" layoutY="175.0" prefWidth="200.0"/>
+
+        <!-- Status -->
+        <Label fx:id="statusLabel" layoutX="180.0" layoutY="220.0" textFill="green"/>
+
+
+        <!-- Buttons -->
+        <Button layoutX="180.0" layoutY="260.0" text="Update" onAction="#updateInfo"/>
+        <Button layoutX="260.0" layoutY="260.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="340.0" layoutY="260.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

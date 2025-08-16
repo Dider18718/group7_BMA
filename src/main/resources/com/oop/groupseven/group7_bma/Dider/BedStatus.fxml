@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.BedStatusController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Bed Availability"/>
-        <ComboBox fx:id="wardBox" layoutX="20" layoutY="60" prefWidth="180"/>
-        <Button text="Load" layoutX="220" layoutY="60" onAction="#load"/>
-        <TextArea fx:id="resultArea" layoutX="20" layoutY="100" prefWidth="420" prefHeight="130" editable="false"/>
-    </children>
+            prefHeight="350.0" prefWidth="700.0">
 
+    <children>
+        <!-- Title -->
+        <Label layoutX="20.0" layoutY="20.0" text="Bed Availability Status">
+
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <!-- Ward Name -->
+        <Label layoutX="40.0" layoutY="80.0" text="Ward:"/>
+        <TextField fx:id="wardField" layoutX="160.0" layoutY="75.0" prefWidth="200.0"/>
+
+        <!-- Available Beds -->
+        <Label layoutX="40.0" layoutY="130.0" text="Available Beds:"/>
+        <TextField fx:id="availableBedsField" layoutX="160.0" layoutY="125.0" prefWidth="100.0"/>
+
+        <!-- Status -->
+        <Label fx:id="statusLabel" layoutX="160.0" layoutY="170.0" textFill="green"/>
+
+        <!-- Buttons -->
+        <Button layoutX="160.0" layoutY="200.0" text="Update" onAction="#updateBedStatus"/>
+        <Button layoutX="230.0" layoutY="200.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="300.0" layoutY="200.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

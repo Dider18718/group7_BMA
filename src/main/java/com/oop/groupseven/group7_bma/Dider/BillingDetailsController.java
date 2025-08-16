@@ -1,19 +1,31 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 public class BillingDetailsController {
-    @FXML private TextField patientIdField;
-    @FXML private TextArea billArea;
 
-    @FXML private void load() {
-        if (patientIdField.getText().isEmpty()) {
-            billArea.setText("Enter a Patient ID.");
+    @FXML private TextField patientNameField;
+    @FXML private Label billingInfoLabel;
+
+    @FXML
+    public void viewBilling(ActionEvent event) {
+        if (patientNameField.getText().isEmpty()) {
+            billingInfoLabel.setText("Enter patient name.");
         } else {
-            billArea.setText(
-                    "Patient ID: " + patientIdField.getText() +
-                            "\nInvoice #B-10231\nRoom: 5,000\nMedicine: 3,200\nLab: 1,200\nTotal: 9,400 BDT\nStatus: Unpaid");
+
+            // TODO: Fetch from DB
+            billingInfoLabel.setText("Billing Details: Room - $500, Medications - $150");
         }
+    }
+
+    @FXML
+    public void handleBack(ActionEvent event) {
+        SceneSwitcher.switchScene((Node) event.getSource(),
+                "PatientSupport.fxml", "Patient Support Dashboard");
     }
 }

@@ -1,22 +1,73 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
+/**
+ * Controller for assigning shifts to doctors.
+ * CRA: User-5 Goal-2 workflow.
+ */
 public class AssignShiftController {
 
     @FXML
-    private TextField doctorNameField, dateField, timeField;
+    private TextField doctorNameField;
+
+    @FXML
+    private ComboBox<String> shiftTypeCombo;
+
+    @FXML
+    private DatePicker shiftDatePicker;
+
     @FXML
     private Label statusLabel;
 
+    /**
+     * Initializes the combo box with shift types.
+     */
     @FXML
-    private void assignShift() {
-        if (doctorNameField.getText().isEmpty() || dateField.getText().isEmpty() || timeField.getText().isEmpty()) {
-            statusLabel.setText("Fill in all fields!");
-        } else {
+    public void initialize() {
+        shiftTypeCombo.getItems().addAll("Morning", "Afternoon", "Night");
+    }
 
-            statusLabel.setText("Shift assigned successfully.");
+    /**
+     * Assigns a shift to a doctor.
+     * TODO: Save to database.
+     */
+    @FXML
+    public void handleAssign(ActionEvent event) {
+        if (doctorNameField.getText().isEmpty() ||
+                shiftTypeCombo.getValue() == null ||
+                shiftDatePicker.getValue() == null) {
+            statusLabel.setText("Please fill all fields.");
+        } else {
+            // TODO: Database save logic
+            statusLabel.setText("Shift assigned successfully!");
         }
+    }
+
+    /**
+     * Clears the form.
+     */
+    @FXML
+    public void clearForm(ActionEvent event) {
+        doctorNameField.clear();
+        shiftTypeCombo.setValue(null);
+        shiftDatePicker.setValue(null);
+        statusLabel.setText("");
+    }
+
+    /**
+     * Navigates back to Hospital Administrator dashboard.
+     */
+    @FXML
+    public void handleBack(ActionEvent event) {
+        SceneSwitcher.switchScene((Node) event.getSource(),
+                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
     }
 }

@@ -1,5 +1,6 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,36 +9,33 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URL;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class CorporateHealthCoordinatorGoal1Controller {
 
-    @javafx.fxml.FXML
-    private TextField timeField;
-    @javafx.fxml.FXML
-    private ListView<String> servicesListView;
-    @javafx.fxml.FXML
-    private DatePicker datePicker;
-    @javafx.fxml.FXML
-    private Label confirmationLabel;
-    @javafx.fxml.FXML
-    private ComboBox<String> companyComboBox;
+    @javafx.fxml.FXML private TextField timeField;
+    @javafx.fxml.FXML private ListView<String> servicesListView;   // typed generics
+    @javafx.fxml.FXML private DatePicker datePicker;
+    @javafx.fxml.FXML private Label confirmationLabel;
+    @javafx.fxml.FXML private ComboBox<String> companyComboBox;    // typed generics
 
     @javafx.fxml.FXML
     public void submitButton(ActionEvent actionEvent) {
-        String time = timeField != null ? timeField.getText() : null;
-        String company = companyComboBox != null ? companyComboBox.getValue() : null;
-        String service = (servicesListView != null && !servicesListView.getSelectionModel().isEmpty())
-                ? servicesListView.getSelectionModel().getSelectedItem()
-                : null;
-        String date = (datePicker != null && datePicker.getValue() != null) ? datePicker.getValue().toString() : null;
+        String time    = (timeField != null) ? timeField.getText() : null;
+        String date    = (datePicker != null && datePicker.getValue() != null)
+                ? datePicker.getValue().toString() : null;
+        String service = (servicesListView != null)
+                ? servicesListView.getSelectionModel().getSelectedItem() : null;
+        String company = (companyComboBox != null) ? companyComboBox.getValue() : null;
 
         if (confirmationLabel != null) {
-            String msg = "Saved: time=" + time + ", date=" + date + ", company=" + company + ", service=" + service;
-            confirmationLabel.setText(msg);
+            confirmationLabel.setText(
+                    "Saved: time=" + String.valueOf(time) +
+                            ", date=" + String.valueOf(date) +
+                            ", service=" + String.valueOf(service) +
+                            ", company=" + String.valueOf(company));
         }
-
-        // Mark handled and avoid 'unused parameter' warnings
+        // actionEvent is now used (and consumed) → no inspection warning
         actionEvent.consume();
     }
 
@@ -46,32 +44,21 @@ public class CorporateHealthCoordinatorGoal1Controller {
         navigateToDashboard(actionEvent);
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
-    private static final String BASE = "/com/oop/groupseven/group7_bma/Sujarna/";
-
     private void navigateToDashboard(ActionEvent event) {
-        URL url = this.getClass().getResource(BASE + "CorporateHealthCoordinator.fxml");
-        if (url == null) {
-            showError("Missing FXML",
-                    "Could not find resource: " + BASE + "CorporateHealthCoordinator.fxml" + System.lineSeparator()
-                            + "Make sure it is on the runtime classpath under src/main/resources");
-            return;
-        }
         try {
-            Parent root = FXMLLoader.load(url);
+            FXMLLoader loader = new FXMLLoader(
+                    HelloApplication.class.getResource("Sujarna/CorporateHealthCoordinator.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
-            showError("Navigation Error", e.getMessage());
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Error");
+            a.setHeaderText("Navigation Error");
+            a.setContentText(e.getMessage());
+            a.showAndWait();
         }
     }
-
-    private void showError(String header, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(header);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }
+

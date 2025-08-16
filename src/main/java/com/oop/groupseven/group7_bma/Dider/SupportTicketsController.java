@@ -1,18 +1,38 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 public class SupportTicketsController {
-    @FXML private TextField ticketIdField, replyField;
-    @FXML private TextArea questionArea;
+
+    @FXML private TextArea queryArea, responseArea;
     @FXML private Label statusLabel;
 
-    @FXML private void sendReply() {
-        if (ticketIdField.getText().isEmpty() || replyField.getText().isEmpty()) {
-            statusLabel.setText("Ticket ID and reply required.");
+    @FXML
+    public void sendResponse(ActionEvent event) {
+        if (queryArea.getText().isEmpty() || responseArea.getText().isEmpty()) {
+            statusLabel.setText("Both fields are required.");
         } else {
-            statusLabel.setText("Reply sent for ticket #" + ticketIdField.getText());
+            // TODO: Save response in DB
+            statusLabel.setText("Response sent to patient.");
         }
+    }
+
+    @FXML
+    public void clearForm(ActionEvent event) {
+
+        queryArea.clear();
+        responseArea.clear();
+        statusLabel.setText("");
+    }
+
+    @FXML
+    public void handleBack(ActionEvent event) {
+        SceneSwitcher.switchScene((Node) event.getSource(),
+                "PatientSupport.fxml", "Patient Support Dashboard");
     }
 }

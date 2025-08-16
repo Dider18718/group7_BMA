@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.EditAppointmentPSRController"
-            prefHeight="400.0" prefWidth="600.0">
-    <Label layoutX="20" layoutY="20" text="Edit Appointment"/>
-    <TextField fx:id="appointmentIdField" layoutX="20" layoutY="60" promptText="Appointment ID"/>
-    <TextField fx:id="newDateField" layoutX="20" layoutY="100" promptText="New Date (YYYY-MM-DD)"/>
-    <TextField fx:id="newTimeField" layoutX="260" layoutY="100" promptText="New Time (e.g., 10:30)"/>
-    <Button text="Update" layoutX="20" layoutY="140" onAction="#update"/>
-    <Label fx:id="statusLabel" layoutX="90" layoutY="144"/>
-</children>
+            prefHeight="400.0" prefWidth="700.0">
 
+    <children>
+        <Label layoutX="20.0" layoutY="20.0" text="Update Patient Appointment Details">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <Label layoutX="40.0" layoutY="80.0" text="Patient Name:"/>
+        <TextField fx:id="patientNameField" layoutX="200.0" layoutY="75.0" prefWidth="300.0"/>
+
+        <Label layoutX="40.0" layoutY="130.0" text="New Date:"/>
+        <DatePicker fx:id="datePicker" layoutX="200.0" layoutY="125.0"/>
+
+        <Label layoutX="40.0" layoutY="180.0" text="New Time:"/>
+        <ComboBox fx:id="timeCombo" layoutX="200.0" layoutY="175.0" prefWidth="150.0"/>
+
+
+        <Label fx:id="statusLabel" layoutX="200.0" layoutY="220.0" textFill="green"/>
+
+        <Button layoutX="200.0" layoutY="260.0" text="Update" onAction="#updateAppointment"/>
+        <Button layoutX="270.0" layoutY="260.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="340.0" layoutY="260.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.DischargeRequestController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Discharge Request"/>
-        <TextField fx:id="patientIdField" layoutX="20" layoutY="60" promptText="Patient ID"/>
-        <TextField fx:id="dateField" layoutX="20" layoutY="100" promptText="Discharge Date"/>
-        <TextArea fx:id="summaryArea" layoutX="20" layoutY="140" prefWidth="440" prefHeight="80" promptText="Summary"/>
-        <Button text="Submit" layoutX="20" layoutY="230" onAction="#submit"/>
-        <Label fx:id="statusLabel" layoutX="90" layoutY="234"/>
-    </children>
+            prefHeight="350.0" prefWidth="650.0">
 
+    <children>
+        <Label layoutX="20.0" layoutY="20.0" text="Process Discharge Request">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <Label layoutX="40.0" layoutY="80.0" text="Patient Name:"/>
+        <TextField fx:id="patientNameField" layoutX="180.0" layoutY="75.0" prefWidth="300.0"/>
+
+        <Label layoutX="40.0" layoutY="130.0" text="Reason for Discharge:"/>
+        <TextArea fx:id="reasonArea" layoutX="180.0" layoutY="125.0" prefWidth="300.0" prefHeight="80.0"/>
+
+        <Label fx:id="statusLabel" layoutX="180.0" layoutY="220.0" textFill="green"/>
+
+
+        <Button layoutX="180.0" layoutY="260.0" text="Process" onAction="#processDischarge"/>
+        <Button layoutX="260.0" layoutY="260.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="330.0" layoutY="260.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

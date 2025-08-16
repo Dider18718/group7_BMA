@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.AttendanceReportController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Staff Attendance Report"/>
-        <TextField fx:id="departmentField" layoutX="20" layoutY="60" promptText="Department (e.g., Cardiology)"/>
-        <TextField fx:id="monthField" layoutX="260" layoutY="60" promptText="Month (e.g., 2025-08)"/>
-        <Button text="Generate" layoutX="20" layoutY="100" onAction="#generate"/>
-        <TextArea fx:id="reportArea" layoutX="20" layoutY="140" prefWidth="440" prefHeight="140" editable="false"/>
-    </children>
+            prefHeight="400.0" prefWidth="700.0">
 
+    <children>
+        <!-- Title -->
+        <Label layoutX="20.0" layoutY="20.0" text="Staff Attendance Report">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <!-- Staff Name -->
+        <Label layoutX="40.0" layoutY="80.0" text="Staff Name:"/>
+        <TextField fx:id="staffNameField" layoutX="160.0" layoutY="75.0" prefWidth="300.0"/>
+
+        <!-- Date -->
+        <Label layoutX="40.0" layoutY="130.0" text="Date:"/>
+        <DatePicker fx:id="attendanceDatePicker" layoutX="160.0" layoutY="125.0" prefWidth="200.0"/>
+
+        <!-- Status -->
+        <Label layoutX="40.0" layoutY="180.0" text="Status:"/>
+        <ComboBox fx:id="statusCombo" layoutX="160.0" layoutY="175.0" prefWidth="150.0"/>
+
+        <!-- Output Message -->
+        <Label fx:id="messageLabel" layoutX="160.0" layoutY="220.0" textFill="green"/>
+
+        <!-- Buttons -->
+        <Button layoutX="160.0" layoutY="260.0" text="Generate" onAction="#generateReport"/>
+
+        <Button layoutX="250.0" layoutY="260.0" text="Clear" onAction="#clearForm"/>
+        <Button layoutX="320.0" layoutY="260.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

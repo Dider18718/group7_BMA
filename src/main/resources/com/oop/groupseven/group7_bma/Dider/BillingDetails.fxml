@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.oop.groupseven.group7_bma.Dider.BillingDetailsController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="20" layoutY="20" text="Billing Details"/>
-        <TextField fx:id="patientIdField" layoutX="20" layoutY="60" promptText="Patient ID"/>
-        <Button text="Load" layoutX="220" layoutY="60" onAction="#load"/>
-        <TextArea fx:id="billArea" layoutX="20" layoutY="100" prefWidth="460" prefHeight="160" editable="false"/>
-    </children>
+            prefHeight="350.0" prefWidth="650.0">
 
+    <children>
+        <Label layoutX="20.0" layoutY="20.0" text="View Billing Details">
+            <font>
+                <Font name="Arial Bold" size="20.0"/>
+            </font>
+        </Label>
+
+        <Label layoutX="40.0" layoutY="80.0" text="Patient Name:"/>
+        <TextField fx:id="patientNameField" layoutX="180.0" layoutY="75.0" prefWidth="300.0"/>
+
+
+        <Label fx:id="billingInfoLabel" layoutX="180.0" layoutY="130.0" text="Billing info will appear here" wrapText="true"/>
+
+        <Button layoutX="180.0" layoutY="200.0" text="View" onAction="#viewBilling"/>
+        <Button layoutX="240.0" layoutY="200.0" text="Back" onAction="#handleBack"/>
+    </children>
 </AnchorPane>

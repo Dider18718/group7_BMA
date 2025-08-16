@@ -1,35 +1,22 @@
-package com.oop.groupseven.group7_bma.storage;
+package com.oop.groupseven.group7_bma;
 
-import java.io.File;
-import java.time.LocalDateTime;
+import com.oop.groupseven.group7_bma.storage.BinStorage;
+import com.oop.groupseven.group7_bma.storage.InspectionRecord;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public class TestBin {
     public static void main(String[] args) {
-        // Optional: start clean
-        // new File("inspections.bin").delete();
+        // BinStorage.clear();
 
-        BinStorage.saveRecord(new InspectionRecord(
-                "INS-" + System.currentTimeMillis(),
-                "Sujarna",
-                LocalDateTime.now(),
-                "All safety checks passed.",
-                5
-        ));
-
-        BinStorage.saveRecord(new InspectionRecord(
-                "INS-" + (System.currentTimeMillis() + 1),
-                "Sujarna",
-                LocalDateTime.now().minusMinutes(10),
-                "Minor dent on rear door.",
-                3
-        ));
+        BinStorage.saveRecord(new InspectionRecord(LocalDate.now(),"Sujarna","Corporate Camp","OK","Setup complete"));
+        BinStorage.saveRecord(new InspectionRecord(LocalDate.now(),"Zainab","Pharmacy Stock","Low","Order antibiotics"));
+        BinStorage.saveRecord(new InspectionRecord(LocalDate.now(),"Shibli","Patient Intake","OK","Queue smooth"));
+        BinStorage.saveRecord(new InspectionRecord(LocalDate.now(),"Dider","Admin Audit","OK","Shift roster updated"));
 
         List<InspectionRecord> all = BinStorage.readAll();
-        System.out.println("Total records: " + all.size());
-        for (InspectionRecord r : all) System.out.println(r);
-
-        File f = new File("inspections.bin");
-        System.out.println("File exists? " + f.exists() + " | size=" + (f.exists()? f.length() : 0) + " bytes");
+        System.out.println("All records = " + all.size());
+        all.forEach(System.out::println);
     }
 }

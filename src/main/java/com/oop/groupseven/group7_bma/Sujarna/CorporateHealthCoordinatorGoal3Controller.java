@@ -70,3 +70,4 @@ public class CorporateHealthCoordinatorGoal3Controller {
         a.showAndWait();
     }
 }
+

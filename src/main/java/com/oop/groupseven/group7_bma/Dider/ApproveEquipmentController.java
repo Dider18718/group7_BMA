@@ -12,6 +12,7 @@ import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
  */
 public class ApproveEquipmentController {
 
+
     @FXML
     private TextField requestIdField;
 

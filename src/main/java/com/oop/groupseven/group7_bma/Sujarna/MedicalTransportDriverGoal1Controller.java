@@ -1,37 +1,62 @@
 package com.oop.groupseven.group7_bma.Sujarna;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+import java.io.IOException;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class MedicalTransportDriverGoal1Controller {
-    @javafx.fxml.FXML
-    private TableColumn patientColumn;
-    @javafx.fxml.FXML
-    private TableColumn timeColumn;
-    @javafx.fxml.FXML
-    private TableView scheduleTable;
-    @javafx.fxml.FXML
-    private TableColumn dropColumn;
-    @javafx.fxml.FXML
-    private Label dropVbox;
-    @javafx.fxml.FXML
-    private Label pickupVbox;
-    @javafx.fxml.FXML
-    private TableColumn pickupColumn;
-    @javafx.fxml.FXML
-    private Label patientVbox;
 
     @javafx.fxml.FXML
-    public void viewMapButton(ActionEvent actionEvent) {
+    public void scheduleButton(ActionEvent event) {
+        event.consume();
+        showInfo("Schedule", "Loaded today's transport schedule.");
     }
 
     @javafx.fxml.FXML
-    public void backButton(ActionEvent actionEvent) {
+    public void viewMapButton(ActionEvent event) {
+        event.consume();
+        showInfo("Route Map", "Opening route preview for the selected job.");
     }
 
     @javafx.fxml.FXML
-    public void scheduleButton(ActionEvent actionEvent) {
+    public void backButton(ActionEvent event) {
+        navigateToDashboard(event);
+    }
+
+    private void navigateToDashboard(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Sujarna/MedicalTransportDriverDashboard.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            showError("Navigation Error", e.getMessage());
+        }
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void showInfo(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Info");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.show();
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void showError(String header, String message) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle("Error");
+        a.setHeaderText(header);
+        a.setContentText(message);
+        a.showAndWait();
     }
 }

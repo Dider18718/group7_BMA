@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Zainab.Doctor8_PrescriptionHistoryForAPatientViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Zainab.Doctor8_PrescriptionHistoryForAPatientViewController">
+   <children>
+      <Label layoutX="225.0" layoutY="33.0" style="-fx-background-color: pink;" text="Prescription History">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="108.0" text="Filter by Date : " />
+      <Label layoutX="71.0" layoutY="170.0" text="Notes : " />
+      <DatePicker fx:id="filterByDatePicker" layoutX="137.0" layoutY="104.0" />
+      <TextArea fx:id="notesTextArea" layoutX="128.0" layoutY="144.0" prefHeight="70.0" prefWidth="194.0" promptText="Notes">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextArea>
+      <TableView fx:id="prescriptionHistoryTableView" layoutX="334.0" layoutY="100.0" prefHeight="200.0" prefWidth="252.0">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="colMedicine" prefWidth="94.4000244140625" text="Medicine" />
+            <TableColumn fx:id="colDosage" prefWidth="81.5999755859375" text="Dosage" />
+        </columns>
+      </TableView>
+      <Button layoutX="94.0" layoutY="340.0" mnemonicParsing="false" onAction="#exportPrintButtonOnAction" text="Export / Print" />
+      <Button layoutX="82.0" layoutY="266.0" mnemonicParsing="false" onAction="#sendInquiryToPharmacyButtonOnAction" text="Send Inquiry to Pharmacy" />
+      <Button layoutX="399.0" layoutY="331.0" mnemonicParsing="false" onAction="#backToDashboardButtonOnAction" prefHeight="43.0" prefWidth="175.0" style="-fx-background-color: violet;" text="Back To Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

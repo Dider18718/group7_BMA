@@ -7,45 +7,61 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Controller for Room Availability view.
- * Allows Medical Inspector to set a room's availability status.
- */
 public class RoomAvailabilityViewController {
 
     @FXML
-    private TableView<?> roomTable;
-
+    private RadioButton availableRadio;
     @FXML
-    private TableColumn<?, ?> roomIdCol;
-
+    private RadioButton unavailableRadio;
     @FXML
-    private TableColumn<?, ?> availabilityCol;
-
+    private ComboBox<String> roomCombo;
     @FXML
-    private ComboBox<String> availabilityCombo;
+    private TextField reasonField;
+
+    private ToggleGroup availabilityGroup;
 
     @FXML
     public void initialize() {
-        // Fill combo with room status options
-        availabilityCombo.setItems(FXCollections.observableArrayList("Available", "Unavailable"));
+        // Initialize ToggleGroup
+        availabilityGroup = new ToggleGroup();
+        availableRadio.setToggleGroup(availabilityGroup);
+        unavailableRadio.setToggleGroup(availabilityGroup);
+        availableRadio.setSelected(true);
+
+        // Fill room combo
+        roomCombo.setItems(FXCollections.observableArrayList("Room-101", "Room-102", "Room-103"));
     }
 
     @FXML
-    public void handleUpdateAvailability(ActionEvent event) {
-        // TODO: Update the selected room's availability in the database
-        System.out.println("Availability updated to: " + availabilityCombo.getValue());
+    public void handleSubmit(ActionEvent event) {
+        String selectedRoom = roomCombo.getValue();
+        RadioButton selectedStatus = (RadioButton) availabilityGroup.getSelectedToggle();
+        String reason = reasonField.getText();
+
+        if (selectedRoom == null) {
+            showAlert("Please select a room.");
+            return;
+        }
+
+        String status = (selectedStatus != null) ? selectedStatus.getText() : "Unknown";
+
+        System.out.println("Room: " + selectedRoom);
+        System.out.println("Status: " + status);
+        if (status.equals("Unavailable")) {
+            System.out.println("Reason: " + reason);
+        }
+
+        // TODO: Save the updated availability
+        showAlert("Room availability updated successfully!");
     }
 
     @FXML
-    public void goBack(ActionEvent event) {
+    public void handleBack(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(
                     "/com/oop/groupseven/group7_bma/MedicalInspector/MedicalInspectorDashboardView.fxml"));
@@ -56,5 +72,13 @@ public class RoomAvailabilityViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Info");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

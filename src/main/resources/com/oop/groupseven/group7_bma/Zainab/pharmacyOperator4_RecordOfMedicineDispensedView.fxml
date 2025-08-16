@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Zainab.PharmacyOperator4_RecordOfMedicineDispensedView"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Zainab.PharmacyOperator4_RecordOfMedicineDispensedView">
+   <children>
+      <Label layoutX="189.0" layoutY="27.0" style="-fx-background-color: pink;" text="Dispense Record Form">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="187.0" layoutY="100.0" text="Scan Barcode :" />
+      <Label layoutX="199.0" layoutY="213.0" text="Quantity :" />
+      <Label layoutX="186.0" layoutY="177.0" text="Patient Name :" />
+      <Label layoutX="184.0" layoutY="136.0" text="Prescription ID :" />
+      <TextField fx:id="scanBarcodeTextField" layoutX="282.0" layoutY="96.0" />
+      <TextField fx:id="prescriptionIDTextField" layoutX="282.0" layoutY="132.0" />
+      <TextField fx:id="patientNameTextField" layoutX="282.0" layoutY="173.0" />
+      <TextField fx:id="quantityTextField" layoutX="282.0" layoutY="209.0" />
+      <Button layoutX="232.0" layoutY="269.0" mnemonicParsing="false" onAction="#saveEntryButtonOnAction" text="Save Entry" />
+      <Button layoutX="424.0" layoutY="344.0" mnemonicParsing="false" onAction="#backToDashboardButtonOnAction" style="-fx-background-color: violet;" text="Back To Dashboard">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

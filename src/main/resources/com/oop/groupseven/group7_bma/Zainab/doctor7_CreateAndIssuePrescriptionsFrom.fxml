@@ -24,7 +24,7 @@
          </font>
       </TextArea>
       <TextField fx:id="medicineSearchTextField" layoutX="259.0" layoutY="106.0" />
-      <TableView layoutX="141.0" layoutY="147.0" prefHeight="106.0" prefWidth="293.0">
+      <TableView fx:id="prescriptionTableView" layoutX="141.0" layoutY="147.0" prefHeight="106.0" prefWidth="293.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="colDosage" prefWidth="97.5999755859375" text="Dosage" />

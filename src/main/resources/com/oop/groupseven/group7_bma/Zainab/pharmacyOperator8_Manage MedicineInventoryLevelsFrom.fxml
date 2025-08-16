@@ -14,7 +14,7 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="92.0" layoutY="77.0" prefHeight="200.0" prefWidth="416.0">
+      <TableView fx:id="inventoryTableView" layoutX="92.0" layoutY="77.0" prefHeight="200.0" prefWidth="416.0">
         <columns>
           <TableColumn fx:id="colMedicineName" prefWidth="151.20001220703125" text="Medicine Name" />
           <TableColumn fx:id="colQuantity" prefWidth="85.5999755859375" text="Quantity" />

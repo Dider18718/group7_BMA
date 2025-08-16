@@ -16,13 +16,13 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="selectDatePicker" layoutX="273.0" layoutY="83.0" />
+      <DatePicker fx:id="selectDatePicker" layoutX="273.0" layoutY="83.0" onAction="#selectDatePickerOnAction" />
       <Label layoutX="183.0" layoutY="86.0" text="Select Date : ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="70.0" layoutY="125.0" prefHeight="89.0" prefWidth="503.0">
+      <TableView fx:id="appointmentTableView" layoutX="70.0" layoutY="125.0" prefHeight="89.0" prefWidth="503.0">
         <columns>
           <TableColumn fx:id="colTime" prefWidth="75.0" text="TIme" />
           <TableColumn fx:id="colPatientName" prefWidth="179.199951171875" text="Patient Name" />

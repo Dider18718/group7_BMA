@@ -6,23 +6,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-@SuppressWarnings("SpellCheckingInspection")
 public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // -Dstart=driver -> transport; otherwise corporate
+        // Choose which screen to start with:
+        // -Dstart=driver  -> MedicalTransportDriverDashboard.fxml
+        // anything else or unset -> CorporateHealthCoordinator.fxml
         String start = System.getProperty("start", "corporate").toLowerCase();
 
         String fxml = start.equals("driver")
                 ? "Sujarna/MedicalTransportDriverDashboard.fxml"
                 : "Sujarna/CorporateHealthCoordinator.fxml";
 
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource(fxml));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxml));
+        Parent root = loader.load();
+
         stage.setTitle("BMA");
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

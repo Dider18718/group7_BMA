@@ -31,7 +31,6 @@ public class AddDoctorViewController {
 
     /**
      * Handles the form submission for adding a new doctor.
-     * TODO: Add logic to save doctor details into the database.
      */
     @FXML
     public void handleSubmit(ActionEvent event) {

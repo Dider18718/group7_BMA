@@ -13,6 +13,7 @@ import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
  */
 public class AddDoctorViewController {
 
+
     @FXML
     private TextField nameField;
 

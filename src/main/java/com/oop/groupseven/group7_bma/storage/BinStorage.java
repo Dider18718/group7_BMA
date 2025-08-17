@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinStorage {
-    // relative path (working dir). You can change to absolute if you prefer.
     private static final String FILE_NAME = "inspections.bin";
 
-    // Save a single record (reads all, append, write back)
     public static void saveRecord(InspectionRecord record) {
         List<InspectionRecord> all = readAll();
         all.add(record);
@@ -19,7 +17,6 @@ public class BinStorage {
         }
     }
 
-    // Read all records (returns empty list if file missing or error)
     @SuppressWarnings("unchecked")
     public static List<InspectionRecord> readAll() {
         File f = new File(FILE_NAME);

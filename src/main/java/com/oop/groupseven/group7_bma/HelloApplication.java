@@ -6,30 +6,53 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // 👇 Choose which user to start with
-        // Run with:  java -Duser=admin   -> HospitalAdministrator.fxml
-        //            java -Duser=psr     -> PatientSupport.fxml
-        // Default (if nothing set)      -> HospitalAdministrator.fxml
+        // VM option: -Dstart=<key>
+        // Keys supported (case-insensitive):
+        //   corporate
+        //   driver
+        //   zainab-doctor, zainab-pharmacy
+        //   shibli-patient, shibli-inspector
+        //   dider-admin, dider-support
+        String start = System.getProperty("start", "corporate").trim().toLowerCase();
 
-        String user = System.getProperty("user", "admin").toLowerCase();
+        String fxmlPath = switch (start) {
+            // Sujarna
+            case "driver"            -> "Sujarna/MedicalTransportDriverDashboard.fxml";
+            case "corporate"         -> "Sujarna/CorporateHealthCoordinator.fxml";
 
-        String fxml;
-        if (user.equals("psr")) {
-            fxml = "Dider/PatientSupport.fxml";   // your PSR dashboard
-        } else {
-            fxml = "Dider/HospitalAdministrator.fxml"; // your Admin dashboard
+            // Zainab
+            case "zainab-doctor"     -> "Zainab/doctorDashboard.fxml";
+            case "zainab-pharmacy"   -> "Zainab/pharmacyOperatorDashboard.fxml";
+
+            // Shibli
+            case "shibli-patient"    -> "Shibli/PatientDashboardView.fxml";
+            case "shibli-inspector"  -> "Shibli/MedicalInspectorDashboard.fxml";
+
+            // Dider
+            case "dider-admin"       -> "Dider/hospitalAdministrator.fxml";
+            case "dider-support"     -> "Dider/PatientSupport.fxml";
+
+            // Fallback -> corporate
+            default -> "Sujarna/CorporateHealthCoordinator.fxml";
+        };
+
+        URL url = HelloApplication.class.getResource(fxmlPath);
+        if (url == null) {
+            throw new IllegalStateException("FXML not found: " + fxmlPath +
+                    " (place it under src/main/resources/" + fxmlPath + ")");
         }
 
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/" + fxml));
-        Parent root = loader.load();
-
-        stage.setTitle("Hospital Management System");
+        Parent root = FXMLLoader.load(url);
+        stage.setTitle("BMA");
         stage.setScene(new Scene(root));
         stage.show();
+        System.out.println("[BMA] Started with -Dstart=" + start + " using " + fxmlPath);
     }
 
     public static void main(String[] args) {

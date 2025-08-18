@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
+
 
 /**
  * Controller for staff attendance reports.
@@ -52,9 +52,5 @@ public class AttendanceReportController {
         messageLabel.setText("");
     }
 
-    @FXML
-    public void handleBack(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
-    }
+
 }

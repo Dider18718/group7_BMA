@@ -1,5 +1,6 @@
-package com.oop.groupseven.group7_bma.Patient;
+package com.oop.groupseven.group7_bma.Shibli;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,42 +17,42 @@ import java.io.IOException;
  */
 public class PatientDashboardViewController {
 
-    @FXML
+    @Deprecated
     public void goToBookAppointment(ActionEvent event) {
         switchScene(event, "BookAppointmentView.fxml", "Book Appointment");
     }
 
-    @FXML
+    @Deprecated
     public void goToPayments(ActionEvent event) {
         switchScene(event, "MedicalPaymentView.fxml", "Payments");
     }
 
-    @FXML
+    @Deprecated
     public void goToEmergencyHelp(ActionEvent event) {
         switchScene(event, "EmergencyHelpRequestView.fxml", "Emergency Help");
     }
 
-    @FXML
+    @Deprecated
     public void goToFeedback(ActionEvent event) {
         switchScene(event, "FeedbackSubmissionView.fxml", "Feedback");
     }
 
-    @FXML
+    @Deprecated
     public void goToAppointments(ActionEvent event) {
         switchScene(event, "ManageAppointmentsView.fxml", "Manage Appointments");
     }
 
-    @FXML
+    @Deprecated
     public void goToLocations(ActionEvent event) {
         switchScene(event, "ManageLocationsView.fxml", "Saved Locations");
     }
 
-    @FXML
+    @Deprecated
     public void goToPrescriptionHistory(ActionEvent event) {
         switchScene(event, "PrescriptionHistoryView.fxml", "Prescription History");
     }
 
-    @FXML
+    @Deprecated
     public void goToFavoriteDoctors(ActionEvent event) {
         switchScene(event, "FavoriteDoctorsView.fxml", "Favorite Doctors");
     }
@@ -66,5 +67,46 @@ public class PatientDashboardViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void handleManageAppointments(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handleEmergency(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handleManageLocations(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handlePayment(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handleBookAppointment(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handleFeedback(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handleLogout(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handlePrescriptionHistory(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void handleFavoriteDoctors(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void backButton(ActionEvent actionEvent) {
+        HelloApplication.switchScene((Node) actionEvent.getSource(), "AppLauncher.fxml");
     }
 }

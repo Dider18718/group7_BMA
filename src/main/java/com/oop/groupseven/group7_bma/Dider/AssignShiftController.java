@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
+
 
 /**
  * Controller for assigning shifts to doctors.
@@ -62,12 +62,5 @@ public class AssignShiftController {
         statusLabel.setText("");
     }
 
-    /**
-     * Navigates back to Hospital Administrator dashboard.
-     */
-    @FXML
-    public void handleBack(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
-    }
+
 }

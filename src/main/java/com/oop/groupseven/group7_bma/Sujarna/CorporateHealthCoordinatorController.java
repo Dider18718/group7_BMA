@@ -79,4 +79,9 @@ public class CorporateHealthCoordinatorController {
             a.showAndWait();
         }
     }
+
+    @javafx.fxml.FXML
+    public void backButton(ActionEvent actionEvent) {
+        HelloApplication.switchScene((Node) actionEvent.getSource(), "AppLauncher.fxml");
+    }
 }

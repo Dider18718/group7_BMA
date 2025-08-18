@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.AppLauncherController">
+   <children>
+      <Label alignment="CENTER" layoutX="190.0" layoutY="32.0" prefHeight="35.0" prefWidth="176.0" style="-fx-background-color: skyblue;" text="BMA">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <VBox layoutX="28.0" layoutY="96.0" prefHeight="227.0" prefWidth="242.0" spacing="30.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#patientButton" prefHeight="30.0" prefWidth="242.0" text="Patient">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#medicalInspectorButton" prefHeight="30.0" prefWidth="258.0" text="Medical Inspector">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#administratorButton" prefHeight="30.0" prefWidth="256.0" text="Hospital Administrator">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#patientSupportButton" prefHeight="30.0" prefWidth="246.0" text="Patient Support">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="324.0" layoutY="96.0" prefHeight="227.0" prefWidth="242.0" spacing="30.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#doctorButton" prefHeight="30.0" prefWidth="243.0" text="Doctor">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#pharmacyButton" prefHeight="30.0" prefWidth="258.0" text="Pharmacy">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#coordinatorButton" prefHeight="30.0" prefWidth="254.0" text="Health Coordinator">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#transportButton" prefHeight="30.0" prefWidth="246.0" text="Transport">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

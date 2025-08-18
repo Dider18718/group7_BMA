@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
+
 
 public class EmergencyAlertController {
 
@@ -37,9 +37,5 @@ public class EmergencyAlertController {
         statusLabel.setText("");
     }
 
-    @FXML
-    public void handleBack(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
-    }
+
 }

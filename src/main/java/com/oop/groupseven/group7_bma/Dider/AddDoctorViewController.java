@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
+
 
 /**
  * Used by Hospital Administrator to add new doctors to the system.
@@ -55,12 +55,5 @@ public class AddDoctorViewController {
         statusLabel.setText("");
     }
 
-    /**
-     * Navigates back to the Hospital Administrator Dashboard.
-     */
-    @FXML
-    public void handleBack(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
-    }
+
 }

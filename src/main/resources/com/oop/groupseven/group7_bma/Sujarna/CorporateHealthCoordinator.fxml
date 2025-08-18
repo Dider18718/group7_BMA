@@ -68,6 +68,7 @@
             </Button>
           </children>
       </VBox>
+      <Button layoutX="511.0" layoutY="356.0" mnemonicParsing="false" onAction="#backButton" prefHeight="26.0" prefWidth="50.0" text="Back" />
 
    </children>
 </AnchorPane>

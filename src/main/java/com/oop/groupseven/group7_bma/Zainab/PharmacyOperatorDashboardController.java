@@ -105,4 +105,9 @@ public class PharmacyOperatorDashboardController
         PharmacyOperator8_ManageMedicineInventoryLevelsFromController PharmacyOperator8_ManageMedicineInventoryLevelsFromController = fxmlLoader.getController() ;
         PharmacyOperator8_ManageMedicineInventoryLevelsFromController.setter(this.pharmacyOperatorDashboardTextArea);
     }
+
+    @javafx.fxml.FXML
+    public void backButton(ActionEvent actionEvent) {
+        HelloApplication.switchScene((Node) actionEvent.getSource(), "AppLauncher.fxml");
+    }
 }

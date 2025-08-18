@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Dider.HospitalAdministratorController"
-            prefHeight="500.0" prefWidth="800.0">
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Dider.HospitalAdministratorController">
 
     <children>
         <!-- Title -->
         <Label layoutX="30.0" layoutY="20.0" text="Hospital Administrator Dashboard">
-            <font><Font name="System Bold" size="22.0"/></font>
+            <font><Font name="System Bold" size="22.0" /></font>
         </Label>
 
 
         <!-- Buttons for 8 Goals -->
-        <Button layoutX="50.0" layoutY="80.0"  text="Add New Doctor"          onAction="#openAddDoctor"/>
-        <Button layoutX="250.0" layoutY="80.0" text="Assign Shift"            onAction="#openAssignShift"/>
-        <Button layoutX="450.0" layoutY="80.0" text="View Patient Records"    onAction="#openPatientRecords"/>
+        <Button layoutX="50.0" layoutY="80.0" onAction="#openAddDoctor" text="Add New Doctor" />
+        <Button layoutX="250.0" layoutY="80.0" onAction="#openAssignShift" text="Assign Shift" />
+        <Button layoutX="450.0" layoutY="80.0" onAction="#openPatientRecords" text="View Patient Records" />
 
-        <Button layoutX="50.0" layoutY="140.0" text="Approve Equipment"       onAction="#openApproveEquipment"/>
-        <Button layoutX="250.0" layoutY="140.0" text="Attendance Report"      onAction="#openAttendanceReport"/>
-        <Button layoutX="450.0" layoutY="140.0" text="Update Hospital Info"   onAction="#openHospitalInfo"/>
+        <Button layoutX="50.0" layoutY="140.0" onAction="#openApproveEquipment" text="Approve Equipment" />
+        <Button layoutX="250.0" layoutY="140.0" onAction="#openAttendanceReport" text="Attendance Report" />
+        <Button layoutX="450.0" layoutY="140.0" onAction="#openHospitalInfo" text="Update Hospital Info" />
 
-        <Button layoutX="50.0" layoutY="200.0" text="Emergency Alert"         onAction="#openEmergencyAlert"/>
-        <Button layoutX="250.0" layoutY="200.0" text="Bed Availability"       onAction="#openBedStatus"/>
+        <Button layoutX="50.0" layoutY="200.0" onAction="#openEmergencyAlert" text="Emergency Alert" />
+        <Button layoutX="250.0" layoutY="200.0" onAction="#openBedStatus" text="Bed Availability" />
 
         <!-- Logout Button -->
-        <Button layoutX="50.0" layoutY="260.0" text="Log Out" onAction="#handleLogout"/>
+        <Button layoutX="50.0" layoutY="260.0" onAction="#handleLogout" text="Log Out" />
+      <Button layoutX="250.0" layoutY="260.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
     </children>
 </AnchorPane>

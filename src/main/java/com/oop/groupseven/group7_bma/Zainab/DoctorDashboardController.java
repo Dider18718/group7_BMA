@@ -106,4 +106,9 @@ public class DoctorDashboardController
         Doctor2_PersonalScheduleandAppointmentsViewController Doctor2_PersonalScheduleandAppointmentsViewController = fxmlLoader.getController() ;
         Doctor2_PersonalScheduleandAppointmentsViewController.setter(this.doctorDashboardTextArea);
     }
+
+    @javafx.fxml.FXML
+    public void backButton(ActionEvent actionEvent) {
+        HelloApplication.switchScene((Node) actionEvent.getSource(), "AppLauncher.fxml");
+    }
 }

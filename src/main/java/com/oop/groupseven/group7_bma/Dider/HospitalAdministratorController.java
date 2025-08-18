@@ -1,68 +1,63 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 /**
  * Dashboard for Hospital Administrator.
- * Provides navigation to all 8 goal screens.
+ * Navigates to all goal screens.
  */
 public class HospitalAdministratorController {
 
-    @FXML
+    @javafx.fxml.FXML
     private void openAddDoctor(ActionEvent event) {
-
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "AddDoctor.fxml", "Add Doctor Profile");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/AddDoctor.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openAssignShift(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "AssignShift.fxml", "Assign Shift to Doctor");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/AssignShift.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openPatientRecords(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "PatientRecords.fxml", "View Patient Records");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/PatientRecords.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openApproveEquipment(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "ApproveEquipment.fxml", "Approve Equipment Requests");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/ApproveEquipment.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openAttendanceReport(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "AttendanceReport.fxml", "Generate Attendance Report");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/AttendanceReport.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openHospitalInfo(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "HospitalInfo.fxml", "Update Hospital Information");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/HospitalInfo.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openEmergencyAlert(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "EmergencyAlert.fxml", "Create Emergency Alert");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/EmergencyAlert.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void openBedStatus(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "BedStatus.fxml", "Monitor Bed Availability");
+        HelloApplication.switchScene((Node) event.getSource(), "Dider/BedStatus.fxml");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void handleLogout(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "Login.fxml", "Login");
+        // adjust path if Login.fxml lives elsewhere
+        HelloApplication.switchScene((Node) event.getSource(), "Login.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void backButton(ActionEvent actionEvent) {
+        HelloApplication.switchScene((Node) actionEvent.getSource(), "AppLauncher.fxml");
     }
 }

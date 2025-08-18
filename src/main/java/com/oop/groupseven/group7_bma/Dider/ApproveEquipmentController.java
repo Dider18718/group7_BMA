@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
+
 
 /**
  * User 5 - Goal 4.
@@ -42,9 +42,5 @@ public class ApproveEquipmentController {
         }
     }
 
-    @FXML
-    public void handleBack(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "HospitalAdministrator.fxml", "Hospital Administrator Dashboard");
-    }
+
 }

@@ -1,64 +1,68 @@
 package com.oop.groupseven.group7_bma.Dider;
 
+import com.oop.groupseven.group7_bma.HelloApplication;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
-import com.oop.groupseven.group7_bma.utils.SceneSwitcher;
 
 public class PatientSupportController {
 
-    @FXML
-    public void goRegisterPatient(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "RegisterPatient.fxml", "Register New Patient");
+    @javafx.fxml.FXML
+    private void goRegisterPatient(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/RegisterPatient.fxml");
     }
 
-    @FXML
-    public void goBookAppointment(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "BookPatientPSR.fxml", "Book Appointment for Patient");
+    @javafx.fxml.FXML
+    private void goBookAppointment(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/BookPatientPSR.fxml");
     }
 
-    @FXML
-    public void goUpdateContactInfo(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "EditContactInfo.fxml", "Update Patient Contact Info");
+    @javafx.fxml.FXML
+    private void goUpdateContactInfo(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/EditContactInfo.fxml");
     }
 
-    @FXML
-    public void goUpdateAppointment(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "EditAppointmentPSR.fxml", "Update Appointment Details");
+    @javafx.fxml.FXML
+    private void goUpdateAppointment(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/EditAppointmentPSR.fxml");
     }
 
-    @FXML
-    public void goDischargeRequest(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "DischargeRequest.fxml", "Process Discharge Request");
+    @javafx.fxml.FXML
+    private void goDischargeRequest(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/DischargeRequest.fxml");
     }
 
-    @FXML
-    public void goVisitorEntry(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "VisitorEntry.fxml", "Manage Visitor Entry");
+    @javafx.fxml.FXML
+    private void goVisitorEntry(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/VisitorEntry.fxml");
     }
 
-    @FXML
-    public void goBillingDetails(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "BillingDetails.fxml", "View Billing Details");
+    @javafx.fxml.FXML
+    private void goBillingDetails(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/BillingDetails.fxml");
     }
 
-    @FXML
-    public void goSupportTickets(ActionEvent event) {
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "SupportTickets.fxml", "Respond to Patient Queries");
+    @javafx.fxml.FXML
+    private void goSupportTickets(ActionEvent event) {
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Dider/SupportTickets.fxml");
     }
 
-    @FXML
-    public void handleLogout(ActionEvent event) {
+    @javafx.fxml.FXML
+    private void handleLogout(ActionEvent event) {
+        // Adjust path if your Login.fxml is in a subfolder
+        HelloApplication.switchScene((Node) event.getSource(),
+                "Login.fxml");
+    }
 
-        SceneSwitcher.switchScene((Node) event.getSource(),
-                "Login.fxml", "Login");
+    @javafx.fxml.FXML
+    public void backButton(ActionEvent actionEvent) {
+        HelloApplication.switchScene((Node) actionEvent.getSource(), "AppLauncher.fxml");
     }
 }

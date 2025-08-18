@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.oop.groupseven.group7_bma.Shibli.PatientDashboardViewController"
-            prefHeight="500.0" prefWidth="800.0">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.groupseven.group7_bma.Shibli.PatientDashboardViewController">
 
     <children>
 
         <!-- Dashboard Title -->
         <Label layoutX="30.0" layoutY="30.0" text="Welcome, Patient!">
-            <font><Font name="System Bold" size="22.0"/></font>
+            <font><Font name="System Bold" size="22.0" /></font>
         </Label>
 
         <!-- Appointment -->
-        <Button layoutX="50.0" layoutY="100.0" text="Book Appointment" prefWidth="200.0" onAction="#handleBookAppointment"/>
+        <Button layoutX="50.0" layoutY="100.0" onAction="#handleBookAppointment" prefWidth="200.0" text="Book Appointment" />
 
         <!-- Payment -->
-        <Button layoutX="300.0" layoutY="100.0" text="Pay Bills" prefWidth="200.0" onAction="#handlePayment"/>
+        <Button layoutX="300.0" layoutY="100.0" onAction="#handlePayment" prefWidth="200.0" text="Pay Bills" />
 
         <!-- Emergency -->
-        <Button layoutX="550.0" layoutY="100.0" text="Emergency Help" prefWidth="200.0" onAction="#handleEmergency"/>
+        <Button layoutX="550.0" layoutY="100.0" onAction="#handleEmergency" prefWidth="200.0" text="Emergency Help" />
 
         <!-- Feedback -->
-        <Button layoutX="50.0" layoutY="180.0" text="Give Feedback" prefWidth="200.0" onAction="#handleFeedback"/>
+        <Button layoutX="50.0" layoutY="180.0" onAction="#handleFeedback" prefWidth="200.0" text="Give Feedback" />
 
         <!-- Manage Appointments -->
-        <Button layoutX="300.0" layoutY="180.0" text="Manage Appointments" prefWidth="200.0" onAction="#handleManageAppointments"/>
+        <Button layoutX="300.0" layoutY="180.0" onAction="#handleManageAppointments" prefWidth="200.0" text="Manage Appointments" />
 
         <!-- Prescriptions -->
-        <Button layoutX="550.0" layoutY="180.0" text="Prescription History" prefWidth="200.0" onAction="#handlePrescriptionHistory"/>
+        <Button layoutX="550.0" layoutY="180.0" onAction="#handlePrescriptionHistory" prefWidth="200.0" text="Prescription History" />
 
         <!-- Location Settings -->
-        <Button layoutX="50.0" layoutY="260.0" text="Saved Locations" prefWidth="200.0" onAction="#handleManageLocations"/>
+        <Button layoutX="50.0" layoutY="260.0" onAction="#handleManageLocations" prefWidth="200.0" text="Saved Locations" />
 
         <!-- Fav Doctors -->
-        <Button layoutX="300.0" layoutY="260.0" text="Favorite Doctors" prefWidth="200.0" onAction="#handleFavoriteDoctors"/>
+        <Button layoutX="300.0" layoutY="260.0" onAction="#handleFavoriteDoctors" prefWidth="200.0" text="Favorite Doctors" />
 
         <!-- Logout or Back -->
-        <Button layoutX="550.0" layoutY="260.0" text="Log Out" prefWidth="200.0" onAction="#handleLogout"/>
+        <Button layoutX="550.0" layoutY="260.0" onAction="#handleLogout" prefWidth="200.0" text="Log Out" />
+      <Button layoutX="50.0" layoutY="327.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
 
     </children>
 </AnchorPane>

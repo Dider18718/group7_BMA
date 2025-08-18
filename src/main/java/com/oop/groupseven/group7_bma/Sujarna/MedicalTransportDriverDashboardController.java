@@ -41,7 +41,7 @@ public class MedicalTransportDriverDashboardController {
     @javafx.fxml.FXML
     public void vehicleButton(ActionEvent event) {
         // NOTE: your FXML filename includes a space before .fxml; kept as-is.
-        gotoView(event, "Sujarna/MedicalTransportDriverGoal8 .fxml");
+        gotoView(event, "Sujarna/MedicalTransportDriverGoal8.fxml");
     }
 
     @javafx.fxml.FXML

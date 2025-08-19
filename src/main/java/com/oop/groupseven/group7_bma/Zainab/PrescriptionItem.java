@@ -5,39 +5,36 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 
 public class PrescriptionItem {
-    private final StringProperty name;
-    private final StringProperty dosage;
-    private final StringProperty duration;
-    private final StringProperty instructions;
+    private String medicineName;
+    private String dosage;
+    private String duration;
+    private String usageInstruction;
 
-    public PrescriptionItem(String name, String dosage, String duration, String instructions) {
-        this.name = new SimpleStringProperty(name);
-        this.dosage = new SimpleStringProperty(dosage);
-        this.duration = new SimpleStringProperty(duration);
-        this.instructions = new SimpleStringProperty(instructions);
+    public PrescriptionItem(String medicineName, String dosage, String duration, String usageInstruction) {
+        this.medicineName = medicineName;
+        this.dosage = dosage;
+        this.duration = duration;
+        this.usageInstruction = usageInstruction;
     }
 
-    public String getName() { return name.get(); }
-    public StringProperty nameProperty() { return name; }
-    public void setName(String name) { this.name.set(name); }
+    public String getMedicineName() {
+        return medicineName;
+    }
 
-    public String getDosage() { return dosage.get(); }
-    public StringProperty dosageProperty() { return dosage; }
-    public void setDosage(String dosage) { this.dosage.set(dosage); }
+    public String getDosage() {
+        return dosage;
+    }
 
-    public String getDuration() { return duration.get(); }
-    public StringProperty durationProperty() { return duration; }
-    public void setDuration(String duration) { this.duration.set(duration); }
+    public String getDuration() {
+        return duration;
+    }
 
-    public String getInstructions() { return instructions.get(); }
-    public StringProperty instructionsProperty() { return instructions; }
-    public void setInstructions(String instructions) { this.instructions.set(instructions); }
+    public String getUsageInstruction() {
+        return usageInstruction;
+    }
 
     @Override
     public String toString() {
-        return "Medicine: " + getName() +
-                "\nDosage: " + getDosage() +
-                "\nDuration: " + getDuration() +
-                "\nInstructions: " + getInstructions();
+        return medicineName + " - " + dosage + " - " + duration;
     }
 }

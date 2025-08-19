@@ -16,15 +16,15 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="141.0" layoutY="110.0" text="Medicine Search : " />
+      <Label layoutX="21.0" layoutY="97.0" text="Medicine Search : " />
       <Label layoutX="50.0" layoutY="275.0" text="Usage Instruction : " />
       <TextArea fx:id="usageInstructionTextArea" layoutX="159.0" layoutY="267.0" prefHeight="26.0" prefWidth="200.0" promptText="Usage Instruction">
          <font>
             <Font size="17.0" />
          </font>
       </TextArea>
-      <TextField fx:id="medicineSearchTextField" layoutX="259.0" layoutY="106.0" />
-      <TableView fx:id="prescriptionTableView" layoutX="141.0" layoutY="147.0" prefHeight="106.0" prefWidth="293.0">
+      <TextField fx:id="medicineSearchTextField" layoutX="126.0" layoutY="93.0" prefHeight="26.0" prefWidth="138.0" />
+      <TableView fx:id="prescriptionTableView" layoutX="278.0" layoutY="147.0" prefHeight="106.0" prefWidth="293.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="colDosage" prefWidth="97.5999755859375" text="Dosage" />
@@ -37,5 +37,9 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Button>
+      <TextField fx:id="durationTextField" layoutX="126.0" layoutY="174.0" prefHeight="26.0" prefWidth="137.0" />
+      <TextField fx:id="dosageTextField" layoutX="126.0" layoutY="129.0" prefHeight="26.0" prefWidth="138.0" />
+      <Label layoutX="21.0" layoutY="133.0" text="Dosage :" />
+      <Label layoutX="21.0" layoutY="178.0" text="Duration :" />
    </children>
 </AnchorPane>
